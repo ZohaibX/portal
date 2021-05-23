@@ -21,6 +21,7 @@ on S3 Bucket Permissions
 
 Bucket policy
 go to edit and i could generate my own policy or copy paste from here 
+[CHANGE_BUCKET_NAME_HERE]
 {
     "Version": "2012-10-17",
     "Id": "Policy1616259705897",

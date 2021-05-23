@@ -50,7 +50,7 @@ router.post("/api/accounts/create-account" , async(req,  res) => {
     
 
     const text = `Your Password is ${password}`
-    sendMail(email , text) //uncomment this when app is ready
+     sendMail(email , text) //uncomment this when app is ready
 
     res.send(emailExist)
   

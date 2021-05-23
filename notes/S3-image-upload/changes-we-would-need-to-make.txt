@@ -7,3 +7,4 @@ create all the s3 bucket stuff as described in main notes
 
 after configuring everything
 change iam keys and bucket info in the /get-url route in image-upload srv
+and in get-url route, change bucket name 

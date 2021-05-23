@@ -1,5 +1,51 @@
-setup data communication -- publish when the user is created
-check pvc's working or not
+courses dpt
+courses allocation
+courses deallocation 
+course id 
+course teacher 
+course content 
+
+
+attendance dpt 
+teachers can access student's attendance 
+add remove update 
+mongodb versioning
+
+results 
+marks saving 
+getting marks of every course 
+calculating marks and show result 
+
+use gql , postgres
+
+hide all keys -- email , aws 
+
+
+DO'S 
+Frontend:-
+	CSS (3 - to be done Again)
+	Javascript
+	Typescript
+	React
+	Next JS + SSR
+	Redux
+
+Backend:-
+	Node (Express)
+	DBs - MongoDb and Postgres
+	APIS - REST and GQL
+	Redis 
+	Jest - Testing 
+	
+DevOps:-
+	Docker 
+	Kubernetes
+	Nginx - Ingress-Nginx
+
+DSA (1 - to be done)
+CI/CD
+Micro-services
+AWS Serverless Services
 
 
 
@@ -10,7 +56,3 @@ check pvc's working or not
 
 
 
-
-
-UPLOAD npm package at last -- github
-im unable to upload it normally
