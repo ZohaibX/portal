@@ -1,4 +1,4 @@
 export enum Accounts {
-  StudentAccountCreated = 'StudentAccountCreated' ,
+  AccountCreated = 'AccountCreated' ,
   ForgotPassword = 'ForgotPassword'
 }

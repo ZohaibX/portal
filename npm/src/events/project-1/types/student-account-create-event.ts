@@ -1,17 +1,17 @@
 import { AccountTypes } from './account-types';
 import { Accounts } from './subjects';
 
-export interface StudentAccountCreateEvent {
-  subject: Accounts.StudentAccountCreated;
+export interface AccountCreateEvent {
+  subject: Accounts.AccountCreated;
   data: {
     id: string;
     email: string | undefined;
     password: string;
     accountActivated: boolean;
     department: string;
-    section: string | undefined ;
+    section?: string | undefined ;
     phone: number;
-    rollNo: number | undefined ;
+    rollNo?: number | undefined ;
     accountType: AccountTypes
   };
 }
