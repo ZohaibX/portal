@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: accounts-mongo-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: accounts-mongo
+  template:
+    metadata:
+      labels:
+        app: accounts-mongo
+    spec:
+      volumes:
+        - name: mongo-storage
+          persistentVolumeClaim:
+            claimName: accounts-pvc
+      containers:
+        - name: accounts-mongo
+          image: mongo
+          volumeMounts:
+            - name: mongo-storage
+              mountPath: /data/db #!! this path must be same for mongodb
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: accounts-mongo-srv
+spec:
+  selector:
+    app: accounts-mongo
+  ports:
+    - name: accounts-db
+      protocol: TCP
+      port: 27017 # default port for mongodb
+      targetPort: 27017
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: accounts-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi # number could be anything e.g 100Gi
+
+
+# kubectl get pv
+# reclaim policy will be Delete 
+# change it to Reclaim
+# in terminal -- go from here https://]kubernetes.io/docs/tasks/administer-cluster/change-pv-reclaim-policy/
+
+# # spec section is requirement for the storage by k8s to local hard disk
+# # but in production environment, we have to define which service we wanna use to get cloud storage
+# # but that service will automatically be configured by the cloud provider where we will host our app
+
