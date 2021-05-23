@@ -1,36 +1,44 @@
 import mongoose from 'mongoose';
 import { Password } from './../services/password-hashing';
+import { AccountType } from './enums/accountType';
+import { updateIfCurrentPlugin } from 'mongoose-update-if-current';
 
 // An interface that describes the properties
 // that are required to create a new User
-interface StudentAttrs {
+interface UserAttrs {
+  id: string ; //  added this property , to assign same id coming from publisher
   email: string;
-  password: string;
-  department: string ;
-  section: string ;
-  rollNo: number ;
+  password?: string;
+  department : string ;
+  section? : string ;
+  rollNo? : number ;
   phone: number ;
+  accountType: AccountType ;
+  accountActivated: boolean ;
 }
 
 // An interface that describes the properties
 // that a User Model has
-interface StudentModel extends mongoose.Model<StudentDoc> {
-  build(attrs: StudentAttrs): StudentDoc;
+interface UserModel extends mongoose.Model<UserDoc> {
+  build(attrs: UserAttrs): UserDoc;
 }
 
 // An interface that describes the properties
 // that a User Document has
-interface StudentDoc extends mongoose.Document {
+interface UserDoc extends mongoose.Document {
+  id: string ;
   email: string;
   password: string;
   department: string ;
   section: string ;
   rollNo: number ;
   phone: number ;
+  accountType: AccountType ;
+  accountActivated: boolean ;
   // createdAt: string; i can add properties like this which are supposed to be added by mongoose
 }
 
-const schema = new mongoose.Schema<StudentDoc, StudentModel>(
+const schema = new mongoose.Schema<UserDoc, UserModel>(
   {
     email: {
       type: String,
@@ -45,17 +53,22 @@ const schema = new mongoose.Schema<StudentDoc, StudentModel>(
       required: true  
     },
     section: {
-      type: String ,
-      required: true  
+      type: String 
     },
     rollNo: {
-      type: Number ,
-      required: true  
+      type: Number 
     },
     phone: {
       type: Number ,
       required: true  
     },
+    accountType: {
+      type: AccountType ,
+      required: true
+    } ,
+    accountActivated: {
+      type: Boolean
+    }
   },
   // changing the returns
   {
@@ -71,25 +84,15 @@ const schema = new mongoose.Schema<StudentDoc, StudentModel>(
   }
 );
 
-//? password hashing middleware
-schema.pre('save', async function (done) {
-  // this pre middleware will only run on saving data
-  if (this.isModified('password')) {
-    // this if statement will only run when password is modified ..
-    // for example, if username or email is modified/changed , then this if function will not execute
-    const hashed = await Password.toHash(this.get('password'));
-    this.set('password', hashed);
-  }
-  done();
-});
+// hashing while saving is removed because we don't wanna hash already hashed password coming from accounts dpt
 
 //? this is to apply ts type checking on the attributes -- we provide while creating -- ex at (1)
-schema.statics.build = (attrs: StudentAttrs) => {
-  return new Student(attrs);
+schema.statics.build = (attrs: UserAttrs) => {
+  return new User(attrs);
 };
 
-const Student = mongoose.model<StudentDoc, StudentModel>('Student', schema);
+const User = mongoose.model<UserDoc, UserModel>('User', schema);
 
 
 
-export { Student };
+export { User };

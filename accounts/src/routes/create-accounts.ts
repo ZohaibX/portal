@@ -8,9 +8,7 @@ import { User } from '../model/user';
 import sendMail from '../services/mailing/server'
 import { textSpanOverlapsWith } from 'typescript';
 import { natsWrapper } from '../services/nats/nats-wrapper';
-import { StudentAccountCreatePublisher } from '../events/publishers/student-account-create';
-import { AccountTypes } from '@zbprojector/project1/build/events/project-1/types/account-types';
-import { AccountType } from '../model/enums/accountType';
+import { AccountCreatePublisher } from '../events/publishers/account-create';
 
 
 
@@ -38,9 +36,7 @@ router.post("/api/accounts/create-account" , async(req,  res) => {
       throw new BadRequestException("Something went wrong during save")
     }
 
-    if(emailExist.accountType === AccountType.Student ) {
-    try {
-      await new StudentAccountCreatePublisher(natsWrapper.client).publish({
+      await new AccountCreatePublisher(natsWrapper.client).publish({
         id: emailExist.id ,
         password: emailExist.password ,
         department: emailExist.department ,
@@ -49,16 +45,12 @@ router.post("/api/accounts/create-account" , async(req,  res) => {
         rollNo: emailExist.rollNo ,
         email: emailExist.email , 
         accountActivated: emailExist.accountActivated ,
-        accountType: AccountTypes.Student , // here we are using account types from @zbprojector/project1
+        accountType: emailExist.accountType , // here we are using account types from @zbprojector/project1
       })
-    } catch (error) {
-      throw new BadRequestException("error")
-    }
-    }
-
+    
 
     const text = `Your Password is ${password}`
-    sendMail(email , text)
+    sendMail(email , text) //uncomment this when app is ready
 
     res.send(emailExist)
   

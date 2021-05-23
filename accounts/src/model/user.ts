@@ -1,6 +1,6 @@
+import { AccountTypes } from '@zbprojector/project1';
 import mongoose from 'mongoose';
 import { Password } from '../services/password-hashing';
-import {AccountType} from './enums/accountType'
 
 // An interface that describes the properties
 // that are required to create a new User
@@ -11,7 +11,7 @@ interface UserAttrs {
   section? : string ;
   rollNo? : number ;
   phone: number ;
-  accountType: AccountType ;
+  accountType: AccountTypes ;
   accountActivated: boolean ;
 }
 
@@ -30,7 +30,7 @@ interface UserDoc extends mongoose.Document {
   section?: string ;
   rollNo?: number ;
   phone: number ;
-  accountType: AccountType ;
+  accountType: AccountTypes ;
   accountActivated: boolean ;
   // createdAt: string; i can add properties like this which are supposed to be added by mongoose
 }
@@ -60,7 +60,7 @@ const schema = new mongoose.Schema<UserDoc, UserModel>(
       required: true  
     },
     accountType: {
-      type: AccountType ,
+      type: AccountTypes ,
       required: true 
     } ,
     accountActivated: {

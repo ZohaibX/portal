@@ -3,6 +3,7 @@ import 'express-async-errors'; //! this is very important package to handle asyn
 //! otherwise, we would have to use next(new Error) instead of throwing an error simply
 
 import { json, urlencoded } from 'body-parser';
+import Routes from './routes/service'
 
 // we are having this extra app file for express because we don't want port issues during tests
 // import Routes from './routes/request-for-registration';
@@ -28,7 +29,7 @@ app.use(
   })
 );
 
-// Routes(app);
+Routes(app);
 
 app.get("/api/users" , (req , res) => {
   res.send("hello")

@@ -5,6 +5,7 @@ import { User } from '../model/user';
 import { validateAuthInput } from '../services/validate-input';
 import { BadRequestException } from '@zbtickets/common';
 import { AccountType } from '../model/enums/accountType';
+import { AccountTypes } from '@zbprojector/project1';
 const router = express.Router();
 
 //! Postman must be used in https version
@@ -27,7 +28,7 @@ router.post("/api/accounts/request-for-registration" , async(req , res) => {
         section ,
         phone ,
         rollNo ,
-        accountType: AccountType.Student
+        accountType: AccountTypes.Student
       }).save()
     } catch (error) {
       console.log("error coming from req reg student"  , error)
@@ -41,7 +42,7 @@ router.post("/api/accounts/request-for-registration" , async(req , res) => {
 
     try {
       teacher = await new User({
-        email  , department , phone , accountType: AccountType.Teacher
+        email  , department , phone , accountType: AccountTypes.Teacher
       }).save()
     } catch (error) {
       console.log("error coming from req reg teacher"  , error)

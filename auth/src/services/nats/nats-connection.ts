@@ -1,3 +1,5 @@
+import { AccountCreatedListener } from '../../events/listeners/account-created';
+import { PasswordForgotListener } from '../../events/listeners/forgot-password';
 import { natsWrapper } from './nats-wrapper';
 
 export const natsConnection = async () => {
@@ -24,8 +26,8 @@ export const natsConnection = async () => {
     process.on('SIGINT', () => natsWrapper.client.close());
     process.on('SIGTERM', () => natsWrapper.client.close());
     
-    // new OrderCreatedListener(natsWrapper.client).listen();
-    // new OrderCancelledListener(natsWrapper.client).listen();
+    new AccountCreatedListener(natsWrapper.client).listen();
+    new PasswordForgotListener(natsWrapper.client).listen();
   } catch (error) {
     console.error(error);
   }

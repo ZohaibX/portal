@@ -12,15 +12,15 @@ const router = express.Router();
 router.get("/api/accounts/get-request-data/:email" , async (req , res) => {
   
   const {email} = req.params ;
+  console.log(email);
+  
 
   if(email.length < 10) throw new BadRequestException("enter vaild email through parameters");
 
-  let userData ;
-  try {
-     userData = await User.findOne({ email })
-  } catch (error) {
-    throw new NotFoundError()
-  }
+  const userData = await User.findOne({ email })
+  if(!userData) throw new BadRequestException("Email Not Found")
+  
+  console.log(userData);
   
   res.send(userData)
 

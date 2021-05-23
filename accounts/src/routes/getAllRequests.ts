@@ -4,7 +4,7 @@ import { User } from '../model/user';
 
 import { validateAuthInput } from '../services/validate-input';
 import { BadRequestException } from '@zbtickets/common';
-import { AccountType } from '../model/enums/accountType';
+import { AccountTypes } from '@zbprojector/project1';
 const router = express.Router();
 
 //! Postman must be used in https version
@@ -12,7 +12,7 @@ router.get("/api/accounts/get-all-students-requests" , async (req , res) => {
   
   let allRequests ; 
   try {
-     allRequests = await User.find({accountType: AccountType.Student , accountActivated: false });
+     allRequests = await User.find({accountType: AccountTypes.Student , accountActivated: false });
   } catch (error) {
     
   }
@@ -26,7 +26,7 @@ router.get("/api/accounts/get-all-teachers-requests" , async (req , res) => {
   
   let allRequests ; 
   try {
-     allRequests = await User.find({accountType: AccountType.Teacher , accountActivated: false });
+     allRequests = await User.find({accountType: AccountTypes.Teacher , accountActivated: false });
   } catch (error) {
     
   }
