@@ -1,0 +1,10 @@
+npm module may not be uploaded to github with whole project -- 
+
+if we go to npm module thru termial
+it will be master branch
+
+i can undo git init -- as --- rm -rf .git
+then master should be shifted to main --
+then i should do --- git rm --cached . -rf
+
+and then do git add commit push from the npm module -- to the github whole project
