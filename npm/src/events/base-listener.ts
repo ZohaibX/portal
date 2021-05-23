@@ -1,8 +1,9 @@
 import { Message, Stan } from 'node-nats-streaming';
+import { Accounts } from './project-1/types/subjects';
 import { Subjects } from './subjects';
 
 interface Event {
-  subject: Subjects;
+  subject: Accounts //! we will have to change this project wise ;
   data: any;
 }
 
