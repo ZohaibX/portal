@@ -5,6 +5,9 @@ course id
 course teacher 
 course content 
 
+Postgres GQL 
+REDIS (with mongodb)
+
 
 attendance dpt 
 teachers can access student's attendance 
@@ -15,6 +18,8 @@ results
 marks saving 
 getting marks of every course 
 calculating marks and show result 
+
+assignments.. (create this service with Frontend)
 
 use gql , postgres
 

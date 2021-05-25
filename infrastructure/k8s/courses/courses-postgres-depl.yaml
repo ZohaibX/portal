@@ -1,0 +1,72 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: courses-postgres-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: courses-postgres
+  template:
+    metadata:
+      labels:
+        component: courses-postgres
+    spec:
+      volumes: # referencing to the persistent volume claim
+        - name: postgres-storage
+          persistentVolumeClaim:
+            claimName: courses-pvc # name of exact persistent volume config file
+      containers:
+        - name: courses-postgres
+          image: postgres
+          ports:
+            - containerPort: 5432
+          volumeMounts: # referencing to the persistent volume claim
+            - name: postgres-storage # must be same as above
+              mountPath: /var/lib/postgresql/data
+              subPath: postgres # a subfolder in which data will stay -- specifically for postgres database
+          env: # overwriting the default password of postgres image
+          # this env variable should be ditto same like this -- from start to end
+            - name: POSTGRES_PASSWORD # secret
+              valueFrom:
+                secretKeyRef:
+                  name: pg-password
+                  key: POSTGRES_PASSWORD
+# whenever database pod crashes, that pod will be deleted by k8s and a new fresh pod will be created
+# but all the data of previous crashed pod will be completely lost
+# so we will use volumes - so newly created pod will have same data access
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: courses-postgres-srv
+spec:
+  selector:
+    component: courses-postgres
+  ports:
+    - port: 5432
+      targetPort: 5432
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: courses-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi # number could be anything e.g 100Gi
+
+
+# kubectl get pv
+# reclaim policy will be Delete 
+# change it to Reclaim
+# in terminal -- go from here https://kubernetes.io/docs/tasks/administer-cluster/change-pv-reclaim-policy/
+
+#  => kubectl patch pv <your-pv-name> -p "{\"spec\":{\"persistentVolumeReclaimPolicy\":\"Retain\"}}"
+
+# # spec section is requirement for the storage by k8s to local hard disk
+# # but in production environment, we have to define which service we wanna use to get cloud storage
+# # but that service will automatically be configured by the cloud provider where we will host our app
+

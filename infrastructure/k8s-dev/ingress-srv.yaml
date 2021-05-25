@@ -24,4 +24,8 @@ spec:
             backend:
               serviceName: accounts-service # actual service file name
               servicePort: 3000 # actual service file port
+          - path: /api/courses/?(.*)
+            backend:
+              serviceName: courses-service # actual service file name
+              servicePort: 3000 # actual service file port
           

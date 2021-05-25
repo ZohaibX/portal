@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: courses-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: courses
+  template:
+    metadata:
+      labels:
+        app: courses
+    spec:
+      containers:
+        - name: courses
+          image: 03004968719/portal-courses # this image is only built and not deployed
+          env:
+            - name: NATS_CLIENT_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: NATS_URL
+              value: 'http://nats-srv:4222'
+            - name: NATS_CLUSTER_ID
+              value: project1
+            - name: REDIS_HOST
+              value: courses-redis-srv # name of the service
+            - name: REDIS_PORT
+              value: '6379' # already defined port in that service
+            - name: PGUSER
+              value: postgres
+            - name: PGHOST
+              value: courses-postgres-srv
+            - name: PGPORT
+              value: '5432'
+            - name: PGDATABASE
+              value: postgres
+            - name: PGPASSWORD # secret
+              valueFrom:
+                secretKeyRef:
+                  name: pg-password
+                  key: POSTGRES_PASSWORD
+            - name: JWT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: JWT_KEY
+---
+# service config
+apiVersion: v1
+kind: Service
+metadata:
+  name: courses-service
+spec:
+  # default type is cluster-ip-service
+  selector:
+    app: courses
+  ports:
+    - name: courses
+      protocol: TCP
+      port: 3000
+      targetPort: 3000
