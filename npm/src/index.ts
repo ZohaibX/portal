@@ -26,7 +26,7 @@ export * from './events/payment-created-event';
 /// PROJECT - 1
 export * from './events/project-1/types/subjects' ;
 export * from './events/project-1/types/account-types';
-export * from './events/project-1/types/student-account-create-event';
-export * from './events/project-1/types/forgot-password-event';
+export * from './events/project-1/student-account-create-event';
+export * from './events/project-1/forgot-password-event';
 
 
