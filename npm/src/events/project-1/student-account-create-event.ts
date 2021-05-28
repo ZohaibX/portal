@@ -1,5 +1,5 @@
-import { AccountTypes } from './account-types';
-import { Accounts } from './subjects';
+import { AccountTypes } from './types/account-types';
+import { Accounts } from './types/subjects';
 
 export interface AccountCreateEvent {
   subject: Accounts.AccountCreated;
