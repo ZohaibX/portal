@@ -21,7 +21,7 @@ router.post(
     const course = await Course.findById(course_id) ;
     if(!course) throw new NotFoundError()
 
-    user.courses.push(course)
+    user.courses.push(course) // assigning course to a STUDENT (FOR NOW)
     await user.save()
     
 
