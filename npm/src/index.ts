@@ -29,5 +29,6 @@ export * from './events/project-1/types/account-types';
 export * from './events/project-1/types/course'
 export * from './events/project-1/student-account-create-event';
 export * from './events/project-1/forgot-password-event';
+export * from './events/project-1/course-create-event';
 
 
