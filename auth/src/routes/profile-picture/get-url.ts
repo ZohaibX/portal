@@ -4,7 +4,7 @@ import { requireAuth, currentUser } from '@zbtickets/common';
 import express, { Request, Response } from 'express';
 import AWS from 'aws-sdk';
 import { v1 as uuid } from 'uuid';
-import { keys } from './keys';
+import {keys} from './keys'
 
 // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html
 

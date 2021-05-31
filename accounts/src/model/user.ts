@@ -8,8 +8,8 @@ interface UserAttrs {
   email: string;
   password?: string;
   department : string ;
-  section? : string ;
-  rollNo? : number ;
+  section ?: string ;
+  rollNo ?: number ;
   phone: number ;
   accountType: AccountTypes ;
   accountActivated: boolean ;

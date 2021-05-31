@@ -1,7 +1,9 @@
+import { StudentCourse , TeacherCourse} from './types/course';
 import mongoose from 'mongoose';
 import { Password } from './../services/password-hashing';
 import { AccountType } from './enums/accountType';
 import { updateIfCurrentPlugin } from 'mongoose-update-if-current';
+
 
 // An interface that describes the properties
 // that are required to create a new User
@@ -35,6 +37,7 @@ interface UserDoc extends mongoose.Document {
   phone: number ;
   accountType: AccountType ;
   accountActivated: boolean ;
+  courses: any;
   // createdAt: string; i can add properties like this which are supposed to be added by mongoose
 }
 
@@ -68,6 +71,14 @@ const schema = new mongoose.Schema<UserDoc, UserModel>(
     } ,
     accountActivated: {
       type: Boolean
+    } ,
+    courses: {
+      type: [
+        {
+          type: mongoose.Schema.Types.ObjectId ,
+          ref: "Course"
+        }
+      ] ,
     }
   },
   // changing the returns

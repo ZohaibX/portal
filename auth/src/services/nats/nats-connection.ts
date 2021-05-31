@@ -1,4 +1,5 @@
 import { AccountCreatedListener } from '../../events/listeners/account-created';
+import { CourseCreatedListener } from '../../events/listeners/course-created';
 import { PasswordForgotListener } from '../../events/listeners/forgot-password';
 import { natsWrapper } from './nats-wrapper';
 
@@ -28,6 +29,8 @@ export const natsConnection = async () => {
     
     new AccountCreatedListener(natsWrapper.client).listen();
     new PasswordForgotListener(natsWrapper.client).listen();
+    new CourseCreatedListener(natsWrapper.client).listen() ;
+    
   } catch (error) {
     console.error(error);
   }

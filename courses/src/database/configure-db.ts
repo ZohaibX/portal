@@ -23,7 +23,13 @@ async function connect() {
   try {
     // creating table -- named values 
     await pool.query(
-    'CREATE TABLE IF NOT EXISTS courses (course_id NUMERIC(255) UNIQUE NOT NULL , id SERIAL PRIMARY KEY , course_teacher VARCHAR(255) NOT NULL, course_name VARCHAR(255) UNIQUE NOT NULL )'
+      `CREATE TABLE IF NOT EXISTS courses (
+        course_id NUMERIC(255) UNIQUE NOT NULL , 
+        id SERIAL PRIMARY KEY , 
+        course_name VARCHAR(255) 
+        UNIQUE NOT NULL , 
+        createdDate DATE NOT NULL 
+        )`
     )
   } catch (error) {
     throw new BadRequestError("Something wrong with table")

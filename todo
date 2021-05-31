@@ -1,3 +1,41 @@
+assigning 
+
+course to student's -- department + section wise -- to each student
+assignments {
+	timing , 
+	remove ,
+}
+attendance {
+	percentage: totalPresents/totalClasses * 100 -> attendance percentage
+}
+each class {
+	title ,
+	it's attendance per class 
+}
+marks {
+	calculating marks 
+	quizzes 
+	assignments
+	s1 , s2, terminals
+}
+each course {
+	each class 
+	attendance
+	assignments 
+	marks 
+}
+remove whole course -- at the end of semester or whenever we want 
+
+course to teacher -- to himself 
+get all it's courses 
+all students in each course 
+upload assignments to some department/section 
+mark attendance of each student 
+upload marks of each student 
+
+
+
+
 courses dpt
 courses allocation
 courses deallocation 

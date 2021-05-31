@@ -4,22 +4,27 @@ import {buildSchema} from 'graphql'
 export default buildSchema(`
 
 type Course {
-  id: String!
-  course_id: String!
-  course_teacher: String!
+  id: String
+  course_id: Int
   course_name: String!
+  createdDate: String
 }
 
 input CourseData {
-  description : String!
+  course_id: Int
+  course_name: String!
 }
 
 type RootQuery {
-  getAllCourses: [Course!]!
+  getAllCourses: [Course]
+  getCourse(id: String): Course
+  getMultipleCourses(ids: [String]): [Course]
 }
 
 type RootMutation {
   addCourse(courseData :  CourseData) : Course
+  deleteCourse(id: String): Course
+  updateCourseTitle(id: String , title: String): Course 
 }
 
 schema {
