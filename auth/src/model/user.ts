@@ -39,6 +39,7 @@ interface UserDoc extends mongoose.Document {
   accountActivated: boolean ;
   courses: any;
   studentCourses: String[]
+  teacherCourses: String[]
   // createdAt: string; i can add properties like this which are supposed to be added by mongoose
 }
 

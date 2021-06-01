@@ -11,6 +11,7 @@ import { Presence } from './enums/presence';
 // that are required to create a new Course
 interface TeacherCourseAttrs {
   user_id: string ,
+  course_id: string ,
   course_name: string ,
   course_code: number ,
   classes?: {classTitle: string , date: string}[] ,
@@ -28,6 +29,7 @@ interface TeacherCourseModel extends mongoose.Model<TeacherCourseDoc> {
 interface TeacherCourseDoc extends mongoose.Document {
   id: string ,
   user_id: string , 
+  course_id: string ,
   course_name: string ,
   course_code: number ,
   classes?: {classTitle: string , classPresence: Presence}[] ,
@@ -37,6 +39,9 @@ interface TeacherCourseDoc extends mongoose.Document {
 ///// For versioning -- mongoose.Schema must have one arg only -- not <doc and model>
 const schema = new mongoose.Schema<TeacherCourseDoc , TeacherCourseModel>(
   {
+    course_id: {
+      type: String
+    },
     course_name: {
       type: String 
     } ,
@@ -70,6 +75,7 @@ schema.statics.build = (attrs: TeacherCourseAttrs) => {
   //! added this property , to assign same id coming from Tickets service
   return new TeacherCourseData({
     user_id: attrs.user_id ,
+    course_id: attrs.course_id ,
     course_name: attrs.course_name,
     course_code: attrs.course_code,
     classes: attrs.classes ,
