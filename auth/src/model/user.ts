@@ -38,6 +38,7 @@ interface UserDoc extends mongoose.Document {
   accountType: AccountType ;
   accountActivated: boolean ;
   courses: any;
+  studentCourses: String[]
   // createdAt: string; i can add properties like this which are supposed to be added by mongoose
 }
 
@@ -79,7 +80,13 @@ const schema = new mongoose.Schema<UserDoc, UserModel>(
           ref: "Course"
         }
       ] ,
-    }
+    } ,
+    studentCourses: {
+      type: [String] 
+    } ,
+    teacherCourses: {
+      type: [String] 
+    } 
   },
   // changing the returns
   {

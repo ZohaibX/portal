@@ -1,4 +1,4 @@
-import { NotFoundError } from '@zbtickets/common';
+import { NotFoundError } from '@zbprojector/project1';
 import express, { Request, Response } from 'express';
 
 const router = express.Router();

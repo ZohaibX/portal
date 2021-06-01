@@ -1,6 +1,6 @@
 // this route will return a presigned url to the client
 
-import { requireAuth, currentUser } from '@zbtickets/common';
+import { requireAuth, currentUser } from '@zbprojector/project1';
 import express, { Request, Response } from 'express';
 import AWS from 'aws-sdk';
 import { v1 as uuid } from 'uuid';

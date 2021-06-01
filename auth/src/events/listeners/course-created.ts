@@ -1,7 +1,7 @@
 import { Message } from 'node-nats-streaming';
 import {
   NotFoundError,
-} from '@zbtickets/common';
+} from '@zbprojector/project1';
 import { AccountCreated } from './queue-groups/names';
 
 import { CourseCreateEvent, Listener , Accounts } from '@zbprojector/project1';

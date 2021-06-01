@@ -28,7 +28,7 @@ async function connect() {
         id SERIAL PRIMARY KEY , 
         course_name VARCHAR(255) 
         UNIQUE NOT NULL , 
-        createdDate DATE NOT NULL 
+        createdDate DATE NOT NULL
         )`
     )
   } catch (error) {

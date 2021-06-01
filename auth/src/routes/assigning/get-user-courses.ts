@@ -1,20 +1,20 @@
 import express, { Request, Response } from 'express';
-import { BadRequestError, currentUser , NotAuthorizedError, requireAuth } from '@zbprojector/project1';
+import { BadRequestError, currentUser,NotAuthorizedError, requireAuth } from '@zbprojector/project1';
 import { User } from '../../model/user';
 import { Course } from '../../model/course';
 import { StudentCourseData } from '../../model/student-course';
 const router = express.Router();
 
 router.get(
-  '/api/users/courses',
+  '/api/users/user-courses',
   currentUser ,
   requireAuth ,
   async (req: Request, res: Response) => {
     if(!req.currentUser) throw new NotAuthorizedError();
 
-    const course = await Course.find()
+    const courses = await StudentCourseData.find({user_id: req.currentUser.id})
 
-    res.status(201).send(course);
+    res.status(201).send(courses);
   }
 );
 

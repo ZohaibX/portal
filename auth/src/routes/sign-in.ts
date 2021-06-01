@@ -2,7 +2,7 @@ import express, { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 
 import { validateAuthInput } from '../services/validate-input';
-import { BadRequestException } from '@zbtickets/common';
+import { BadRequestError } from '@zbprojector/project1';
 import { User } from '../model/user';
 import { Password } from '../services/password-hashing';
 const router = express.Router();
@@ -18,7 +18,7 @@ router.post("/api/users/sign-in" , async (req , res) => {
     //? using next(error) -- error will directly go to the error handling middleware and catch the error and we can send valid responses
 
     const existingUser = await User.findOne({ email });
-    if (!existingUser) throw new BadRequestException('Invalid Credentials - Email');
+    if (!existingUser) throw new BadRequestError('Invalid Credentials - Email');
     //? using next(error) - error will directly go to the error handling middleware and catch the error and we can send valid responses
 
     console.log("password - saved is: " , existingUser.password)
@@ -27,7 +27,7 @@ router.post("/api/users/sign-in" , async (req , res) => {
       existingUser.password,
       password
     );
-    if (!passwordMatch) throw new BadRequestException('Invalid Credentials');
+    if (!passwordMatch) throw new BadRequestError('Invalid Credentials');
     //? using next(error) - error will directly go to the error handling middleware and catch the error and we can send valid responses
 
     //? Generating a JWT token
