@@ -11,11 +11,7 @@ interface UserPayloadX {
 declare global {
   namespace Express {
     interface Request {
-      currentUser?: {
-        id: string;
-        email: string;
-        accountType:  AccountTypes
-      };
+      currentUser?: UserPayloadX
     }
   }
 }
