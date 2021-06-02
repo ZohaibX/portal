@@ -32,7 +32,7 @@ interface TeacherCourseDoc extends mongoose.Document {
   course_id: string ,
   course_name: string ,
   course_code: number ,
-  classes?: {classTitle: string , classPresence: Presence}[] ,
+  classes?: {classTitle: string , date: string}[] ,
   // createdAt: string; i can add properties like this which are supposed to be added by mongoose
 }
 
@@ -49,7 +49,7 @@ const schema = new mongoose.Schema<TeacherCourseDoc , TeacherCourseModel>(
       type: Number
     } ,
     classes: {
-      type: [{classTitle: String , classPresence: String}] ,
+      type: [{classTitle: String , date: String}] ,
       default: []
     } ,
     user_id: {

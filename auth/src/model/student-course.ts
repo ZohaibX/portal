@@ -35,7 +35,7 @@ interface StudentCourseDoc extends mongoose.Document {
   user_id: string , 
   course_name: string ,
   course_code: number ,
-  classes?: {classTitle: string , classPresence: Presence}[] ,
+  classes: {classTitle: string , classPresence: Presence}[]  ,
   attendance?: number,
   assignments?: {url: string , expiration: string}[] ,
   marks?: {assessmentTitle: AssessmentTitles , assessmentTopic: string , marks: number } []
