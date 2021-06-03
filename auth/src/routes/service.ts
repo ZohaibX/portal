@@ -11,6 +11,8 @@ import UpdateAttendance from './assigning/update-courses'
 import GetUserCourses from './assigning/get-user-courses'
 
 import MarkAttendance from './assigning/attendance/mark-attendance'
+import UploadMarks from './assigning/marks/upload-marks'
+import UpdateMarks from './assigning/marks/update-marks'
 
 import { currentUser, requireAuth } from '@zbprojector/project1';
 
@@ -31,4 +33,6 @@ export default (app: any) => {
   ImageUpload(app)
 
   app.use(MarkAttendance)
+  app.use(UploadMarks)
+  app.use(UpdateMarks)
 } 

@@ -17,7 +17,7 @@ interface StudentCourseAttrs {
   classes?: {classTitle: string , classPresence: Presence}[] ,
   attendance?: number,
   assignments?: {url: string , expiration: string}[] ,
-  marks?: {assessmentTitle: AssessmentTitles , assessmentTopic: string , marks: number } []
+  marks?: {id: string , assessmentTitle: AssessmentTitles , assessmentTopic: string , totalMarks: number , gainedMarks: number, percentage: number  } []
 }
 
 // An interface that describes the properties
@@ -38,7 +38,7 @@ interface StudentCourseDoc extends mongoose.Document {
   classes: {classTitle: string , classPresence: Presence}[]  ,
   attendance?: number,
   assignments?: {url: string , expiration: string}[] ,
-  marks?: {assessmentTitle: AssessmentTitles , assessmentTopic: string , marks: number } []
+  marks?: {id: string , assessmentTitle: AssessmentTitles , assessmentTopic: string , totalMarks: number , gainedMarks: number , percentage: number } []
   // createdAt: string; i can add properties like this which are supposed to be added by mongoose
 }
 
@@ -67,7 +67,7 @@ const schema = new mongoose.Schema<StudentCourseDoc , StudentCourseModel>(
       default: []
     } ,
     marks: {
-      type: [{assessmentTitle: String , assessmentTopic: String , marks: Number }] ,
+      type: [{id: String , assessmentTitle: String , assessmentTopic: String , totalMarks: Number , gainedMarks: Number , percentage: Number }] ,
       default: []
     } ,
     user_id: {
