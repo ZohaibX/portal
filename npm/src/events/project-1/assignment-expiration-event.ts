@@ -1,7 +1,7 @@
 import { Accounts } from './types/subjects';
 
 export interface AssignmentExpirationEvent {
-  subject: Accounts.AssignmentAssigned; 
+  subject: Accounts.Expired; 
   data: {
     courseCode: number ,
     section: string ,
