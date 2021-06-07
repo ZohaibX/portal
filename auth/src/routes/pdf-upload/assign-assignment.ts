@@ -12,29 +12,29 @@ const router = express.Router();
 // assign details to the teacher too 
 
 router.post('/api/users/pdf-upload', async (req: Request, res: Response) => {
-  // // only teacher could do this 
-  // if(req.currentUser!.accountType !== AccountTypes.Teacher) throw new NotAuthorizedError();
+  // only teacher could do this 
+  if(req.currentUser!.accountType !== AccountTypes.Teacher) throw new NotAuthorizedError();
 
   const { assignmentTitle , url , key , course_code , section , department , expirationTime } = req.body;
 
-  // // checking data 
-  // if(!assignmentTitle && !url && !key && !course_code && !section && !department && !expirationTime) throw new BadRequestError('Provide All Data Required');
+  // checking data 
+  if(!assignmentTitle && !url && !key && !course_code && !section && !department && !expirationTime) throw new BadRequestError('Provide All Data Required');
 
-  // const teacher = await User.findById(req.currentUser!.id)
+  const teacher = await User.findById(req.currentUser!.id)
 
-  // // checking if teacher is from right department 
-  // if(teacher!.department !== department) throw new BadRequestError("Bad Request")
+  // checking if teacher is from right department 
+  if(teacher!.department !== department) throw new BadRequestError("Bad Request")
 
-  // const teacherCourseData = await TeacherCourseData.findOne({ user_id: req.currentUser!.id , course_code})
+  const teacherCourseData = await TeacherCourseData.findOne({ user_id: req.currentUser!.id , course_code})
 
-  // // checking if teacher has this course 
-  // if(!teacherCourseData) throw new  BadRequestError("You don't have this course");
+  // checking if teacher has this course 
+  if(!teacherCourseData) throw new  BadRequestError("You don't have this course");
 
-  // // getting all students -- to assign them assignment
-  // const students = await User.find({ department , section}) ;
-  // if(!students) throw new BadRequestError("Students Not Found");
+  // getting all students -- to assign them assignment
+  const students = await User.find({ department , section}) ;
+  if(!students) throw new BadRequestError("Students Not Found");
 
-  // const studentIds = students.map((student: any) => student.id)
+  const studentIds = students.map((student: any) => student.id)
 
   // //* Calculate an expiration date given by teacher
   const EXPIRATION_WINDOW_TIME = expirationTime * 60; //  minutes //? 
@@ -45,26 +45,29 @@ router.post('/api/users/pdf-upload', async (req: Request, res: Response) => {
   // //? this is how we can get back our Expiration time in seconds
   // // note - this is how we can set 15 minutes after creating an order
 
-  // // updating all the students data
-  // for(let i=0 ; i< studentIds.length ; i++) {
+  const randomId = JSON.stringify(Math.ceil(Math.random() * 9999))
 
-  //     const course = await StudentCourseData.findOne({
-  //           user_id: studentIds[i] , 
-  //           course_code
-  //         });
+  // updating all the students data
+  for(let i=0 ; i< studentIds.length ; i++) {
+
+      const course = await StudentCourseData.findOne({
+            user_id: studentIds[i] , 
+            course_code
+          });
       
-  //     if(course) {
-  //       course!.assignments!.push({title: assignmentTitle , url , expiration: expiration.toISOString() });
-  //       await course!.save()
-  //     }
-  // }
+      if(course) {
+        course!.assignments!.push({id:  randomId , title: assignmentTitle , url , expiration: expiration.toISOString() });
+        await course!.save()
+      }
+  }
+
   
   new AssignmentAssignedPublisher(natsWrapper.client).publish({
     courseCode: course_code ,
     section: section ,
     department: department ,
     assignment: {
-      id: "test" ,
+      id: randomId ,
       expiresAt: expiration.toISOString(), 
     }
   })

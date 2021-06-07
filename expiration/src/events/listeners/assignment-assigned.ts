@@ -1,13 +1,13 @@
-import { Listener, AssignmentExpirationEvent , Accounts } from '@zbprojector/project1';
+import { Listener, AssignmentAssignedEvent , Accounts } from '@zbprojector/project1';
 import {AssignmentAssigned} from './queue-group/names'
 import { Message } from 'node-nats-streaming';
 import { expirationQueue } from '../../queues/expiration-srv';
 
-export class AssignmentAssignedListener extends Listener<AssignmentExpirationEvent> {
+export class AssignmentAssignedListener extends Listener<AssignmentAssignedEvent> {
   readonly subject = Accounts.AssignmentAssigned;
   queueGroupName = AssignmentAssigned;
 
-  async onMessage(data: AssignmentExpirationEvent['data'], msg: Message) {
+  async onMessage(data: AssignmentAssignedEvent['data'], msg: Message) {
 
     const delay = new Date(data.assignment.expiresAt).getTime() - new Date().getTime();
     // new Date(data.expiresAt).getTime() will give us saved time in milli-seconds

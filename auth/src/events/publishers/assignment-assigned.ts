@@ -1,5 +1,5 @@
-import { Publisher, AssignmentExpirationEvent, Accounts } from '@zbprojector/project1';
+import { Publisher, AssignmentAssignedEvent, Accounts } from '@zbprojector/project1';
 
-export class AssignmentAssignedPublisher extends Publisher<AssignmentExpirationEvent> {
+export class AssignmentAssignedPublisher extends Publisher<AssignmentAssignedEvent> {
   readonly subject = Accounts.AssignmentAssigned;
 }
