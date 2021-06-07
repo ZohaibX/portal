@@ -1,9 +1,26 @@
-Result 
+DO NATS COMMUNICATION WITH ASSIGNMENT SAVING 
+DO PROFILE PIC DATA SAVING 
+
+{
+    "email": "zohaibbutt283@gmail.com" ,
+    "password": "42857837"
+}
 
 
-EXTEND VARIATIONS OF COURSE ASSIGNING 
+{
+    "email": "sp19-bcs-003@cuilahore.edu.pk" ,
+    "password": "26250015"
+}
 
-assigning 
+{
+    "email": "zohaibbutt045@gmail.com" ,
+    "password": "94247502"
+}
+
+
+assign assignment to a section --
+assignment uploading by student's side 
+add redis to auth 
 
 course to student's -- department + section wise -- to each student
 assignments {

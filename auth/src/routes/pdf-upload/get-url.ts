@@ -4,7 +4,7 @@ import { requireAuth, currentUser } from '@zbprojector/project1';
 import express, { Request, Response } from 'express';
 import AWS from 'aws-sdk';
 import { v1 as uuid } from 'uuid';
-import {keys} from './keys'
+import {keys} from '../profile-picture/keys'
 
 // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html
 
@@ -18,7 +18,7 @@ const router = express.Router();
 
 // this method is returning a url, configured with the Key, we shared
 router.get(
-  '/api/users/image-upload/get-url',
+  '/api/users/pdf-upload/get-url',
   currentUser ,
   async (req: Request, res: Response) => {
     console.log(req.currentUser);
@@ -28,11 +28,12 @@ router.get(
     // this key will be the name of the file, we will upload to s3
     // so we could save the url and this filename, into our database
 
+    console.log(req.params.contentType)
     s3.getSignedUrl(
       'putObject',
       {
         Bucket: 'project-1-bucket', /// change the names acc to projects -- PDF -- Content-Type: application/pdf;
-        ContentType: 'image/jpeg',
+        ContentType: req.body.contentType , // upload word file , video or picture 
         Key: key,
       },
       (err: any , url: any) => res.send({ key, url, err })

@@ -25,7 +25,7 @@ router.post(
     let assignCourse ;
     if(req.currentUser.accountType === AccountTypes.Student) {
 
-      const courseAlreadyExist = await StudentCourseData.findOne({course_code: course.course_code});
+      const courseAlreadyExist = await StudentCourseData.findOne({ user_id: req.currentUser!.id ,course_code: course.course_code});
       if(courseAlreadyExist) throw new BadRequestError("Course Already Assigned");
 
      assignCourse = await StudentCourseData.build({

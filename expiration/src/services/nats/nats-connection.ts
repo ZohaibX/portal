@@ -1,7 +1,5 @@
-import { AccountCreatedListener } from '../../events/listeners/account-created';
-import { AssignmentExpiredListener } from '../../events/listeners/assignment-expired';
-import { CourseCreatedListener } from '../../events/listeners/course-created';
-import { PasswordForgotListener } from '../../events/listeners/forgot-password';
+import { AssignmentAssignedListener } from './../../events/listeners/assignment-assigned';
+
 import { natsWrapper } from './nats-wrapper';
 
 export const natsConnection = async () => {
@@ -28,10 +26,7 @@ export const natsConnection = async () => {
     process.on('SIGINT', () => natsWrapper.client.close());
     process.on('SIGTERM', () => natsWrapper.client.close());
     
-    new AccountCreatedListener(natsWrapper.client).listen();
-    new PasswordForgotListener(natsWrapper.client).listen();
-    new CourseCreatedListener(natsWrapper.client).listen() ;
-    new AssignmentExpiredListener(natsWrapper.client).listen();
+    new AssignmentAssignedListener(natsWrapper.client).listen();
     
   } catch (error) {
     console.error(error);
