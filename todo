@@ -1,90 +1,14 @@
-DO NATS COMMUNICATION WITH ASSIGNMENT SAVING 
 DO PROFILE PIC DATA SAVING 
 
-{
-    "email": "zohaibbutt283@gmail.com" ,
-    "password": "42857837"
-}
+assignment uploading by student's side -- could be done sometime if really needed
 
+redis is used in auth srv -- course getting and creating 
 
-{
-    "email": "sp19-bcs-003@cuilahore.edu.pk" ,
-    "password": "26250015"
-}
+mongodb versioning -- done in course model in auth .
+mongodb versioning is used in the service using another's data 
+like auth is saving course service data -- so  versioning is used in auth's course model 
 
-{
-    "email": "zohaibbutt045@gmail.com" ,
-    "password": "94247502"
-}
-
-
-assign assignment to a section --
-assignment uploading by student's side 
-add redis to auth 
-
-course to student's -- department + section wise -- to each student
-assignments {
-	timing , 
-	remove ,
-}
-attendance {
-	percentage: totalPresents/totalClasses * 100 -> attendance percentage
-}
-each class {
-	title ,
-	it's attendance per class 
-}
-marks {
-	calculating marks 
-	quizzes 
-	assignments
-	s1 , s2, terminals
-}
-each course {
-	each class 
-	attendance
-	assignments 
-	marks 
-}
-remove whole course -- at the end of semester or whenever we want 
-
-course to teacher -- to himself 
-get all it's courses 
-all students in each course 
-upload assignments to some department/section 
-mark attendance of each student 
-upload marks of each student 
-
-
-
-
-courses dpt
-courses allocation
-courses deallocation 
-course id 
-course teacher 
-course content 
-
-Postgres GQL 
-REDIS (with mongodb)
-
-
-attendance dpt 
-teachers can access student's attendance 
-add remove update 
-mongodb versioning
-
-results 
-marks saving 
-getting marks of every course 
-calculating marks and show result 
-
-assignments.. (create this service with Frontend)
-
-use gql , postgres
-
-hide all keys -- email , aws 
-
+mongodb references of other's model is used in user.ts in auth srv 
 
 DO'S 
 Frontend:-

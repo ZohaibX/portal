@@ -33,6 +33,7 @@ interface CourseDoc extends mongoose.Document {
   course_code: number ,
   version: number; // important dependency to handle versioning
   // createdAt: string; i can add properties like this which are supposed to be added by mongoose
+  cache?: any ; // just for type checking comfort
 }
 
 ///// For versioning -- mongoose.Schema must have one arg only -- not <doc and model>

@@ -7,6 +7,7 @@ import { AccountCreated } from './queue-groups/names';
 import { CourseCreateEvent, Listener , Accounts } from '@zbprojector/project1';
 import { Course } from '../../model/course';
 import mongoose from 'mongoose'
+import * as hash from '../../services/caching/cache' // to run js file -- tsconfig -> allowJS to true 
 
 
 export class CourseCreatedListener extends Listener<CourseCreateEvent> {
@@ -26,6 +27,8 @@ export class CourseCreatedListener extends Listener<CourseCreateEvent> {
       course_code: data.course_code ,
       course_name: data.course_name 
     }).save()
+
+    hash.clearHash(data.user_id)
 
   console.log(`Course Data is saved with course name: ${course.course_name}`)
 

@@ -17,6 +17,7 @@ interface UserAttrs {
   phone: number ;
   accountType: AccountType ;
   accountActivated: boolean ;
+  profile_pic?: { url: string };
 }
 
 // An interface that describes the properties
@@ -41,6 +42,7 @@ interface UserDoc extends mongoose.Document {
   studentCourses: String[]
   teacherCourses: String[]
   // createdAt: string; i can add properties like this which are supposed to be added by mongoose
+  profile_pic?: { url: string };
 }
 
 const schema = new mongoose.Schema<UserDoc, UserModel>(
@@ -87,7 +89,11 @@ const schema = new mongoose.Schema<UserDoc, UserModel>(
     } ,
     teacherCourses: {
       type: [String] 
-    } 
+    } , 
+    profile_pic: {
+      type: {url: String } ,
+      default: {url: "" }
+    }
   },
   // changing the returns
   {

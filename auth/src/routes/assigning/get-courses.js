@@ -9,10 +9,10 @@ router.get(
   '/api/users/courses',
   currentUser ,
   requireAuth ,
-  async (req: Request, res: Response) => {
+  async (req, res) => {
     if(!req.currentUser) throw new NotAuthorizedError();
 
-    const course = await Course.find()
+    const course = await Course.find().cache({ key: req.currentUser.id });
 
     res.status(201).send(course);
   }
