@@ -7,7 +7,7 @@ import { AccountCreated } from './queue-groups/names';
 import { CourseCreateEvent, Listener , Accounts } from '@zbprojector/project1';
 import { Course } from '../../model/course';
 import mongoose from 'mongoose'
-import * as hash from '../../services/caching/cache' // to run js file -- tsconfig -> allowJS to true 
+import * as hash from '../../services/caching/cache-1' // to run js file -- tsconfig -> allowJS to true 
 
 
 export class CourseCreatedListener extends Listener<CourseCreateEvent> {

@@ -1,14 +1,4 @@
-DO PROFILE PIC DATA SAVING 
-
-assignment uploading by student's side -- could be done sometime if really needed
-
-redis is used in auth srv -- course getting and creating 
-
-mongodb versioning -- done in course model in auth .
-mongodb versioning is used in the service using another's data 
-like auth is saving course service data -- so  versioning is used in auth's course model 
-
-mongodb references of other's model is used in user.ts in auth srv 
+REDIS IS USED IN AUTH SRV - get-courses route and course-created listener 
 
 DO'S 
 Frontend:-
