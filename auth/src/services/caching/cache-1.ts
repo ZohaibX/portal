@@ -13,7 +13,7 @@ export const client = redis.createClient({
 client.hget = util.promisify(client.hget); // so we can use await here
 
 client.on('connect', function(){
-  console.log('Connected to Redis...');
+  console.log('...');
 });
 
 export const clearHash = (hashKey: any) => {

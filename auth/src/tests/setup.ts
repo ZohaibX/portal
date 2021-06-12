@@ -25,6 +25,7 @@ beforeAll(async () => {
   // Your "fix" is to disable Node from rejecting self-signed certificates by allowing ANY unauthorised certificate.
   // Your fix is insecure and shouldn't really be done at all, but is often done in development (it should never be done in production).
   // The proper solution should be to put the self-signed certificate in your trusted root store OR to get a proper certificate signed by an existing Certificate Authority (which is already trusted by your server).
+  
 
   mongo = new MongoMemoryServer();
   const mongoUri = await mongo.getUri();
