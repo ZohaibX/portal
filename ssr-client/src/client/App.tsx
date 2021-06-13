@@ -1,12 +1,14 @@
 import * as React from 'react';
 import { renderRoutes } from 'react-router-config';
-import Header from './components/header';
+// import Header from './components/header';
 // import { fetchCurrentUser } from './Store/actions';
+
+import "./main.css"
 
 const App = ({ route }) => {
   return (
     <div>
-      <Header />
+      <h1 id="h1" className="h1">HELLLLLLLL</h1>
       {renderRoutes(route.routes)}
     </div>
   );
@@ -14,5 +16,5 @@ const App = ({ route }) => {
 
 export default {
   component: App,
-  loadData: ({ dispatch }) => dispatch(fetchCurrentUser()),
+  // loadData: ({ dispatch }) => dispatch(fetchCurrentUser()),
 };

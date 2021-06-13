@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import "../main.css"
 
 const Home = () => {
   const head = () => (
     <Helmet>
-      <title>{`Home Component`}</title>
+      <title>{`ZohaibX`}</title>
       {/* // this is how we will make our title dynamic */}
-      <meta property='og:title' content='Home'></meta>
+      <meta property='og:title' content='ZohaibX'></meta>
       {/* // this title is for SEO -- to identify this page title  */}
       {/* // we normally have to add 4 required meta tags and we can add more optional meta tags for SEO */}
       {/* //? https://ogp.me/ */}
@@ -16,15 +17,7 @@ const Home = () => {
 
   return (
     <div>
-      {head()}
-      <h1>Im a Home Component </h1>
-      <button onClick={() => console.log('You Pressed Me!')}>
-        Press Me - !
-      </button>
-      <br />
-      <Link to='/users'>
-        <button>Get me to Users</button>
-      </Link>
+      <h1 id="h1">Whats up</h1>
     </div>
   );
 };
