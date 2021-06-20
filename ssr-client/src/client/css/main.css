@@ -1,0 +1,254 @@
+/*
+$Breakpoint argument choices
+Phone -- 0 - 600 px 
+tab-port -- 600 - 900 px for tablet portrait 
+tab-land -- 900 - 1200 px for tab landscape 
+[1200 - 1800 ] -- is for desktop we are using and we have made the website with 
+big-desktop -- 1800px + 
+*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+body {
+  font-size: 62.5%;
+  font-family: Verdana, sans-serif;
+  font-weight: 400;
+  min-height: 100vh;
+  color: #777; }
+  @media only screen and (max-width: 68.75em) {
+    body {
+      font-size: 50%; } }
+
+/*
+$Breakpoint argument choices
+Phone -- 0 - 600 px 
+tab-port -- 600 - 900 px for tablet portrait 
+tab-land -- 900 - 1200 px for tab landscape 
+[1200 - 1800 ] -- is for desktop we are using and we have made the website with 
+big-desktop -- 1800px + 
+*/
+@keyframes moveInLeft {
+  /* moveInLeft is a variable name -- so can be used anywhere */
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem);
+    /* on the left  */ }
+  80% {
+    transform: translateX(1rem);
+    /* before 100% on main position -- we want it to go 10px further right and then , come back */ }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+    /*  at 0 ... it will be at the main position */ } }
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem);
+    /* on the right  */ }
+  80% {
+    transform: translateX(-1rem);
+    /* before 100% on main position -- we want it to go -10px further left and then , come back */ }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+    /*  at 0 ... it will be at the main position */ } }
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(10rem);
+    /* on the right  */ }
+  80% {
+    transform: translateY(-1rem);
+    /* before 100% on main position -- we want it to go -10px further left and then , come back */ }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    /*  at 0 ... it will be at the main position */ } }
+
+/*
+$Breakpoint argument choices
+Phone -- 0 - 600 px 
+tab-port -- 600 - 900 px for tablet portrait 
+tab-land -- 900 - 1200 px for tab landscape 
+[1200 - 1800 ] -- is for desktop we are using and we have made the website with 
+big-desktop -- 1800px + 
+*/
+.row {
+  max-width: 114rem;
+  margin: 0 auto !important; }
+  .row:not(:last-child) {
+    margin-bottom: 8rem; }
+    @media only screen and (max-width: 56.25em) {
+      .row:not(:last-child) {
+        margin-bottom: 6rem !important; } }
+  @media only screen and (max-width: 56.25em) {
+    .row {
+      max-width: 50rem;
+      padding: 0 3rem; } }
+  .row::after {
+    content: "";
+    display: table;
+    clear: both; }
+  .row [class^="col-"] {
+    float: left !important; }
+    .row [class^="col-"]:not(:last-child) {
+      margin-right: 6rem !important; }
+      @media only screen and (max-width: 56.25em) {
+        .row [class^="col-"]:not(:last-child) {
+          margin-right: 0;
+          margin-bottom: 6rem; } }
+    @media only screen and (max-width: 56.25em) {
+      .row [class^="col-"] {
+        width: 100% !important; } }
+  .row .col-1-of-2 {
+    width: calc((100% - 6rem) / 2); }
+  .row .col-1-of-3 {
+    width: calc((100% - 2 * 6rem) / 3); }
+  .row .col-1-of-4 {
+    width: calc((100% - 3 * 6rem) / 4); }
+  .row .col-2-of-3 {
+    width: calc(2 * ((100% - 2 * 6rem) / 3) + 6rem); }
+  .row .col-2-of-4 {
+    width: calc(2 * ((100% - 3 * 6rem) / 4) + 6rem); }
+  .row .col-3-of-4 {
+    width: calc(3 * ((100% - 3 * 6rem) / 4) + 2 * 6rem); }
+
+.image-box {
+  display: block;
+  margin: 0 auto;
+  margin-top: 3rem;
+  height: 12rem;
+  width: 12rem;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%; }
+  @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+    .image-box {
+      -webkit-clip-path: circle(50% at 50% 50%);
+      clip-path: circle(50% at 50% 50%);
+      -webkit-shape-outside: circle(50% at 50% 50%);
+      shape-outside: circle(50% at 50% 50%);
+      border-radius: none; } }
+  .image-box__image {
+    height: 100% !important;
+    transform: translate(1.9rem, 3rem) scale(1.7);
+    transition: all 0.5s ease-in;
+    backface-visibility: hidden; }
+  .image-box__caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 20%);
+    color: #fff;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.7rem;
+    text-transform: uppercase;
+    text-align: center;
+    opacity: 0;
+    backface-visibility: hidden;
+    transition: all 0.4s; }
+  .image-box:hover .image-box__caption {
+    opacity: 1;
+    transform: translate(-50%, -40%); }
+  .image-box:hover .image-box__image {
+    transform: translate(2rem, 2.5rem) scale(1.5);
+    filter: blur(3px) brightness(80%); }
+
+.intro {
+  margin-top: 2rem;
+  width: 100%;
+  color: black;
+  text-transform: uppercase;
+  backface-visibility: hidden;
+  text-align: center; }
+  .intro__h1 {
+    display: block;
+    color: black;
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: .1rem;
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out; }
+    @media (max-width: 37.5em) {
+      .intro__h1 {
+        font-size: 1rem; } }
+  .intro__h4 {
+    /* same as the previous block */
+    color: black;
+    font-size: 1rem;
+    font-weight: 300;
+    letter-spacing: 0.1rem;
+    animation: moveInRight 1s ease-out;
+    /* one line animation */ }
+    @media (max-width: 37.5em) {
+      .intro__h4 {
+        font-size: .5rem; } }
+
+.about {
+  padding-top: 2rem;
+  text-align: center; }
+  @media only screen and (max-width: 56.25em) {
+    .about {
+      padding-top: 3rem; } }
+  .about-all {
+    text-align: center; }
+    .about-all__h4 {
+      display: block;
+      /* same as the previous block */
+      color: black;
+      font-size: 1.5rem;
+      font-weight: bold;
+      /* one line animation */ }
+      @media (max-width: 37.5em) {
+        .about-all__h4 {
+          font-size: .9rem; } }
+  .about-1 {
+    padding-left: 3rem;
+    margin: 0 auto; }
+    @media only screen and (max-width: 56.25em) {
+      .about-1 {
+        padding-left: 0rem; } }
+    .about-1 li {
+      font-size: 1rem;
+      padding-top: .5rem;
+      padding-bottom: .5rem;
+      color: black; }
+      .about-1 li:not(:last-child) {
+        border-bottom: 0.1rem solid #ccc; }
+  .about-2 ul {
+    list-style: none;
+    width: 100%;
+    margin: 0 auto; }
+    .about-2 ul li {
+      font-size: 1rem;
+      padding-top: .5rem;
+      padding-bottom: .5rem;
+      color: black; }
+      .about-2 ul li:not(:last-child) {
+        border-bottom: 0.1rem solid #ccc; }
+  .about-2 span {
+    font-weight: bolder; }
+  .about-3 {
+    padding-right: 3rem; }
+    @media only screen and (max-width: 56.25em) {
+      .about-3 {
+        padding-right: 0rem; } }
+    @media only screen and (max-width: 75em) {
+      .about-3 {
+        margin-left: -3rem; } }
+    .about-3 ul {
+      list-style: none;
+      width: 100%;
+      margin: 0 auto; }
+      .about-3 ul li {
+        font-size: 1rem;
+        padding-top: .5rem;
+        padding-bottom: .5rem;
+        color: black; }
+        .about-3 ul li:not(:last-child) {
+          border-bottom: 0.1rem solid #ccc; }

@@ -32,7 +32,28 @@ module.exports = {
       {
         test: /\.css$/i,
         use: [MiniCssExtractPlugin.loader ,  "css-loader" ],
-      }
+      },
+      {
+        test: /\.(png|jpe?g|gif|jp2|webp)$/,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]',
+        },
+      },
+      // {
+      //   test: /\.(jpg|png|svg)$/,
+      //   loader: 'url-loader',
+      //   options: {
+      //     limit: 25000,
+      //   },
+      // },
+      // {
+      //     test: /\.(jpg|png|svg)$/,
+      //     loader: 'file-loader',
+      //     options: {
+      //       name: '[path][name].[hash].[ext]',
+      //     },
+      // },
     ],
   },
 };

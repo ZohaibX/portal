@@ -42,5 +42,5 @@ app.get('*', (req, res) => {
 });
 
 app.listen(4000, () => {
-  console.log('Server Side of SSR running on port -- 000');
+  console.log('Server Side of SSR running on port -- 4000');
 });
