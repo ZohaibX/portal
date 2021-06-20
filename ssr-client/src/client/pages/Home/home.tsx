@@ -56,7 +56,7 @@ const Home = () => {
             <h4 className="about-all__h4">Experience</h4>
               <ul>
                 <li>Don't have working Experience for a Company</li>
-                <li>I've made a Portfolio Project of Education Poral, combining all of the skills</li>
+                <li>I've made a Portfolio Project of Education Portal, combining all of the skills</li>
                 <li> <span>Click Here</span> for Portfolio Project (to be implemented after deployment)</li>
               </ul>
           </div>
