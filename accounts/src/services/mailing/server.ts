@@ -8,6 +8,7 @@ import {keys} from './key';
 
 export default (to: string , text: string) => {
 
+if(!keys.apiKey) throw new Error()
 sgmail.setApiKey(keys.apiKey);
 
 const msg = {

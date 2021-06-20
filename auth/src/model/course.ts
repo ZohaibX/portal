@@ -12,10 +12,7 @@ interface CourseAttrs {
   id: string; //! added this property , to assign same id coming from Course service
   course_name: string ,
   course_code: number ,
-  classes?: {classTitle: string , classPresence: Presence}[] ,
-  attendance?: number,
-  assignments?: {url: string , expiration: string}[] ,
-  marks?: {assessmentTitle: AssessmentTitles , assessmentTopic: string , marks: number } []
+  
 }
 
 // An interface that describes the properties
@@ -34,12 +31,9 @@ interface CourseModel extends mongoose.Model<CourseDoc> {
 interface CourseDoc extends mongoose.Document {
   course_name: string ,
   course_code: number ,
-  classes?: {classTitle: string , classPresence: Presence}[] ,
-  attendance?: number,
-  assignments?: {url: string , expiration: string}[] ,
-  marks?: {assessmentTitle: AssessmentTitles , assessmentTopic: string , marks: number } []
   version: number; // important dependency to handle versioning
   // createdAt: string; i can add properties like this which are supposed to be added by mongoose
+  cache?: any ; // just for type checking comfort
 }
 
 ///// For versioning -- mongoose.Schema must have one arg only -- not <doc and model>
@@ -51,22 +45,7 @@ const schema = new mongoose.Schema<CourseDoc , CourseModel>(
     course_code: {
       type: Number
     } ,
-    classes: {
-      type: [{classTitle: String , classPresence: String}] ,
-      default: []
-  } ,
-  attendance: {
-    type: Number ,
-    default: 0
-  } ,
-  assignments: {
-    type: [ {url: String , expiration: Date}] ,
-    default: []
-  } ,
-  marks: {
-    type: [{assessmentTitle: String , assessmentTopic: String , marks: Number }] ,
-    default: []
-  } 
+    
   },
   // changing the returns
   {
@@ -101,10 +80,6 @@ schema.statics.build = (attrs: CourseAttrs) => {
     _id: mongoose.Types.ObjectId(attrs.id),
     course_name: attrs.course_name,
     course_code: attrs.course_code, 
-    classes: attrs.classes ,
-    attendance: attrs.attendance ,
-    marks: attrs.marks ,
-    assignments:attrs.assignments 
   });
 };
 

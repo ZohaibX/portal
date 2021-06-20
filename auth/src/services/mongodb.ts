@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 // import { DatabaseConnectionError } from '../errors/database-connection-error';
-import { DatabaseConnectionError } from '@zbtickets/common';
+import { DatabaseConnectionError } from '@zbprojector/project1';
 
 export const database = async () => {
   if (!process.env.MONGO_URI) throw new Error('Mongo Uri Must Be Defined!');

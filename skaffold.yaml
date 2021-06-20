@@ -12,28 +12,50 @@ build:
   local:
     push: false # every container we build will not be automatically deployed to dockerhub
   artifacts:
-    - image: 03004968719/portal-auth
-      context: auth # path to the folder
+    # - image: 03004968719/portal-auth
+    #   context: auth # path to the folder
+    #   docker:
+    #     dockerfile: Dockerfile
+    #   sync:
+    #     manual:
+    #       - src: 'src/**/*.ts' # every ts file in the src folder #? look style of this file
+    #         dest: . # for putting the changes in the container
+    # - image: 03004968719/portal-accounts
+    #   context: accounts # path to the folder
+    #   docker:
+    #     dockerfile: Dockerfile
+    #   sync:
+    #     manual:
+    #       - src: 'src/**/*.ts' # every ts file in the src folder #? look style of this file
+    #         dest: . # for putting the changes in the container
+    # - image: 03004968719/portal-courses
+    #   context: courses # path to the folder
+    #   docker:
+    #     dockerfile: Dockerfile
+    #   sync:
+    #     manual:
+    #       - src: 'src/**/*.ts' # every ts file in the src folder #? look style of this file
+    #         dest: . # for putting the changes in the container
+    # - image: 03004968719/portal-expiration
+    #   context: expiration # path to the folder
+    #   docker:
+    #     dockerfile: Dockerfile
+    #   sync:
+    #     manual:
+    #       - src: 'src/**/*.ts' # every ts file in the src folder #? look style of this file
+            # dest: . # for putting the changes in the container
+    - image: 03004968719/portal-client
+      context: ssr-client # path to the folder
       docker:
         dockerfile: Dockerfile
       sync:
         manual:
-          - src: 'src/**/*.ts' # every ts file in the src folder #? look style of this file
+          - src: '**/*.jsx'
             dest: . # for putting the changes in the container
-    - image: 03004968719/portal-accounts
-      context: accounts # path to the folder
-      docker:
-        dockerfile: Dockerfile
-      sync:
-        manual:
-          - src: 'src/**/*.ts' # every ts file in the src folder #? look style of this file
+
+          - src: '**/*.tsx'
             dest: . # for putting the changes in the container
-    - image: 03004968719/portal-courses
-      context: courses # path to the folder
-      docker:
-        dockerfile: Dockerfile
-      sync:
-        manual:
-          - src: 'src/**/*.ts' # every ts file in the src folder #? look style of this file
+          
+          - src: '**/*.scss'
             dest: . # for putting the changes in the container
-    
+  

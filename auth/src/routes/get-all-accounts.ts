@@ -2,7 +2,6 @@ import express, { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 
 import { validateAuthInput } from '../services/validate-input';
-import { BadRequestException } from '@zbtickets/common';
 import { User } from '../model/user';
 import { AccountType } from '../model/enums/accountType';
 const router = express.Router();

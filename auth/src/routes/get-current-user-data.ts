@@ -1,6 +1,5 @@
 import express, { Request, Response } from 'express';
-import { currentUser } from '@zbprojector/project1';
-import { requireAuth } from '@zbtickets/common';
+import { currentUser , requireAuth } from '@zbprojector/project1';
 import { User } from '../model/user';
 const router = express.Router();
 

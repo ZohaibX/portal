@@ -27,6 +27,11 @@ spec:
                 secretKeyRef:
                   name: jwt-secret
                   key: JWT_KEY
+            - name: MAIL_KEY
+              valueFrom: 
+                secretKeyRef: 
+                  name: mail-key
+                  key: MAIL_KEY
             - name: NATS_CLIENT_ID
               valueFrom:
                 fieldRef:
@@ -35,6 +40,10 @@ spec:
               value: 'http://nats-srv:4222'
             - name: NATS_CLUSTER_ID
               value: project1
+            - name: REDIS_HOST
+              value: auth-redis-srv # name of the service
+            - name: REDIS_PORT
+              value: '6379' # already defined port in that service
 ---
 # service config
 apiVersion: v1

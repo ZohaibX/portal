@@ -27,6 +27,7 @@ export default {
     }
 
     await new CourseCreatePublisher(natsWrapper.client).publish({
+      user_id: req.currentUser!.id , 
       _id: course.rows[0].id ,
       course_name ,
       course_code: course_id

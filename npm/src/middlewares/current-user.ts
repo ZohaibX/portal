@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 import { AccountTypes } from '../events/project-1/types/account-types';
 
-interface UserPayload {
+interface UserPayloadX {
   id: string;
   email: string;
   accountType:  AccountTypes
@@ -11,7 +11,7 @@ interface UserPayload {
 declare global {
   namespace Express {
     interface Request {
-      currentUser?: UserPayload;
+      currentUser?: UserPayloadX
     }
   }
 }
@@ -29,7 +29,7 @@ export const currentUser = (
     const payload = jwt.verify(
       req.session.jwt,
       process.env.JWT_KEY!
-    ) as UserPayload;
+    ) as UserPayloadX;
     req.currentUser = payload;
   } catch (err) {}
 

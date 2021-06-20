@@ -8,7 +8,7 @@ import Routes from './routes/service'
 // we are having this extra app file for express because we don't want port issues during tests
 // import Routes from './routes/request-for-registration';
 import cookieSession from 'cookie-session';
-import { errorHandler, NotFoundError } from '@zbtickets/common';
+import { errorHandler, NotFoundError } from '@zbprojector/project1';
 
 const app = express();
 app.set('trust proxy', true); // it will accept every kind of traffic, believing it is coming from nginx

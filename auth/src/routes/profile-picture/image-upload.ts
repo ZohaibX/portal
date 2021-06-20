@@ -1,21 +1,23 @@
-import { NotFoundError } from '@zbtickets/common';
+import { NotFoundError , NotAuthorizedError , BadRequestError } from '@zbprojector/project1';
 import express, { Request, Response } from 'express';
+import {User} from '../../model/user'
 
 const router = express.Router();
 
 router.post('/api/users/image-upload', async (req: Request, res: Response) => {
+  if(!req.currentUser) throw new NotAuthorizedError()
+
   const { imageUrl } = req.body;
+  if(!imageUrl) throw new BadRequestError("Provide Image Url")
 
-  // note - imageUrl is not actual url but key 
-  // url data that we recieve from get-url is url, key and error
+  const user = await User.findByIdAndUpdate(req.currentUser!.id , {
+    profile_pic: {
+      url: imageUrl
+    }
+  } ,{ new: true }) ;
+  if(!user) throw new BadRequestError('User Not Found');
 
-  // key is the name of image, we set that in get-url
-  // and url is url
-
-  // we can get both from frontend and save here 
-
-  console.log(`ImageUrl is: ${imageUrl} `);
-  res.send(`ImageUrl is: ${imageUrl} `);
+  res.send(user);
 });
 
 export default router ;

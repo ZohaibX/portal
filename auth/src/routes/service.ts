@@ -7,6 +7,16 @@ import GetCurrentUserData from './get-current-user-data'
 
 import AssignCourse from './assigning/assign-course'
 import GetCourses from './assigning/get-courses'
+import UpdateAttendance from './assigning/update-courses'
+import GetUserCourses from './assigning/get-user-courses'
+
+import MarkAttendance from './assigning/attendance/mark-attendance'
+import UploadMarks from './assigning/marks/upload-marks'
+import UpdateMarks from './assigning/marks/update-marks'
+
+import PDFUpload from './pdf-upload/service'
+
+import { currentUser, requireAuth } from '@zbprojector/project1';
 
 export default (app: any) => {
   app.use(GetAllAccounts) ;
@@ -15,7 +25,19 @@ export default (app: any) => {
   app.use(SignOut)
   app.use(GetCurrentUserData)
 
+  app.use(currentUser)
+  app.use(requireAuth)
+
   app.use(AssignCourse)
   app.use(GetCourses)
+  app.use(UpdateAttendance)
+  app.use(GetUserCourses)
   ImageUpload(app)
+
+  app.use(MarkAttendance)
+  app.use(UploadMarks)
+  app.use(UpdateMarks)
+  PDFUpload(app)
+
+
 } 

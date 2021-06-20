@@ -1,5 +1,7 @@
 export enum Accounts {
   AccountCreated = 'AccountCreated' ,
   ForgotPassword = 'ForgotPassword' ,
-  CourseCreated = 'CourseCreated'
+  CourseCreated = 'CourseCreated' ,
+  AssignmentAssigned = "AssignmentAssigned" ,
+  Expired = 'Expired'
 }

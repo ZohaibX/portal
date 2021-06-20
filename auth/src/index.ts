@@ -3,6 +3,7 @@ import { app } from './app';
 import { natsConnection } from './services/nats/nats-connection';
 // import { errorHandler } from './errors/error-handler';
 
+
 if (!process.env.JWT_KEY)
   // this is in k8s/auth depl
   throw new Error('process.env.JWT_KEY is not defined ');

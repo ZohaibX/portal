@@ -1,6 +1,6 @@
 // this route will return a presigned url to the client
 
-import { requireAuth, currentUser } from '@zbtickets/common';
+import { requireAuth, currentUser } from '@zbprojector/project1';
 import express, { Request, Response } from 'express';
 import AWS from 'aws-sdk';
 import { v1 as uuid } from 'uuid';
@@ -31,7 +31,7 @@ router.get(
     s3.getSignedUrl(
       'putObject',
       {
-        Bucket: 'project-1-bucket', /// change the names acc to projects 
+        Bucket: 'project-1-bucket', /// change the names acc to projects -- PDF -- Content-Type: application/pdf;
         ContentType: 'image/jpeg',
         Key: key,
       },
