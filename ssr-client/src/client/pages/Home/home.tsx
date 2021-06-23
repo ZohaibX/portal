@@ -2,9 +2,6 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import "../../css/main.css"
-import {Container , Col , Row , Image} from 'react-bootstrap'
-
-import figure from '../../../../public/figure.jpg'
 
 
 const Home = () => {
@@ -33,7 +30,7 @@ const Home = () => {
           </figure> 
 
           <div className="intro">
-            <h1 className="intro__h1">Zohaib Butt</h1>
+            <a href="https://github.com/ZohaibX" className="intro__h1">Zohaib Butt</a>
             <h4 className="intro__h4">Full Stack Web Developer</h4>
           </div>
 
@@ -57,7 +54,7 @@ const Home = () => {
               <ul>
                 <li>Don't have working Experience for a Company</li>
                 <li>I've made a Portfolio Project of Education Portal, combining all of the skills</li>
-                <li> <span>Click Here</span> for Portfolio Project (to be implemented after deployment)</li>
+                <li> <Link to="/portal">Click Here</Link> for Portfolio Project </li>
               </ul>
           </div>
 

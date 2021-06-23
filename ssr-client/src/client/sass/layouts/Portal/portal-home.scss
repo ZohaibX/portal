@@ -1,0 +1,48 @@
+@import './Navbar/navbar.scss';
+
+.main{
+  height: 82vh;
+  background-color: red;
+
+  background-image: linear-gradient(to right, rgba($color-primary-light, 0.8), rgba($color-primary-dark, 0.8)),
+        url("");
+    // its a normal screen size
+    // image ka url --main.css file k hisaab se dena hai
+    /*to right means from left to right -- we can also say to left , to top , to right bottom ......... then we have to colors with 0.8 opacity and then .. image*/
+
+    background-size: cover; // /*it will cover the background in every size of page .. like responsive*/
+    background-position: top; // /*when changing size of screen -- picture position can change .. so we fixed it for top .. means --top position will remain same ... we could say -- bottom , center*/
+    position: relative; // /*to have position absolute or something other in its children and it can move on this header only*/
+    background-repeat: no-repeat;
+
+    @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+        clip-path: polygon(
+            0 0,
+            100% 0,
+            100% 75vh,
+            0 100%
+        ); //  /*it is xy xy -- we can design different type of polygons from the site Clippy ... https://bennettfeely.com/clippy/ */
+        height: 95vh;
+    }
+
+    @include respond(tab-port) {
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+    }
+
+    // when resolution is higher than 192 dots per inch -- simply .. higher than normal
+    // and screen width is larger than 600px - 37.5em
+    // because we don't wanna show a high resolution image in small screens
+
+    // , is for or condition
+    // when screen width is > 2000px - 125em.. then we must have picture of high resolution ..
+    // 192 dpi means 2x
+    @media only screen and (min-resolution: 192dpi) and (min-width: 37.5em),
+        only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em) {
+        // this is for safari -- which means 2x resolution only screen and (min-width: 125em)
+
+        background-image: linear-gradient(to right, rgba($color-secondary-light, 0.8), rgba($color-secondary-dark, 0.8)),
+            url("");
+    }
+}

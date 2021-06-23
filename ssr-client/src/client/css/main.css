@@ -96,7 +96,7 @@ big-desktop -- 1800px +
   .row [class^="col-"] {
     float: left !important; }
     .row [class^="col-"]:not(:last-child) {
-      margin-right: 6rem !important; }
+      margin-right: 2rem !important; }
       @media only screen and (max-width: 56.25em) {
         .row [class^="col-"]:not(:last-child) {
           margin-right: 0;
@@ -105,18 +105,26 @@ big-desktop -- 1800px +
       .row [class^="col-"] {
         width: 100% !important; } }
   .row .col-1-of-2 {
-    width: calc((100% - 6rem) / 2); }
+    width: calc((100% - 2rem) / 2); }
   .row .col-1-of-3 {
-    width: calc((100% - 2 * 6rem) / 3); }
+    width: calc((100% - 2 * 2rem) / 3); }
   .row .col-1-of-4 {
-    width: calc((100% - 3 * 6rem) / 4); }
+    width: calc((100% - 3 * 2rem) / 4); }
   .row .col-2-of-3 {
-    width: calc(2 * ((100% - 2 * 6rem) / 3) + 6rem); }
+    width: calc(2 * ((100% - 2 * 2rem) / 3) + 2rem); }
   .row .col-2-of-4 {
-    width: calc(2 * ((100% - 3 * 6rem) / 4) + 6rem); }
+    width: calc(2 * ((100% - 3 * 2rem) / 4) + 2rem); }
   .row .col-3-of-4 {
-    width: calc(3 * ((100% - 3 * 6rem) / 4) + 2 * 6rem); }
+    width: calc(3 * ((100% - 3 * 2rem) / 4) + 2 * 2rem); }
 
+/*
+$Breakpoint argument choices
+Phone -- 0 - 600 px 
+tab-port -- 600 - 900 px for tablet portrait 
+tab-land -- 900 - 1200 px for tab landscape 
+[1200 - 1800 ] -- is for desktop we are using and we have made the website with 
+big-desktop -- 1800px + 
+*/
 .image-box {
   display: block;
   margin: 0 auto;
@@ -160,13 +168,11 @@ big-desktop -- 1800px +
 
 .intro {
   margin-top: 2rem;
-  width: 100%;
   color: black;
   text-transform: uppercase;
   backface-visibility: hidden;
   text-align: center; }
   .intro__h1 {
-    display: block;
     color: black;
     font-size: 2rem;
     font-weight: 800;
@@ -177,6 +183,9 @@ big-desktop -- 1800px +
     @media (max-width: 37.5em) {
       .intro__h1 {
         font-size: 1rem; } }
+    .intro__h1:hover {
+      text-decoration: none;
+      cursor: pointer; }
   .intro__h4 {
     /* same as the previous block */
     color: black;
@@ -252,3 +261,150 @@ big-desktop -- 1800px +
         color: black; }
         .about-3 ul li:not(:last-child) {
           border-bottom: 0.1rem solid #ccc; }
+
+/*
+$Breakpoint argument choices
+Phone -- 0 - 600 px 
+tab-port -- 600 - 900 px for tablet portrait 
+tab-land -- 900 - 1200 px for tab landscape 
+[1200 - 1800 ] -- is for desktop we are using and we have made the website with 
+big-desktop -- 1800px + 
+*/
+.header {
+  height: 9.3rem !important;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center; }
+  @media (max-width: 37.5em) {
+    .header {
+      flex-wrap: wrap;
+      height: 15rem;
+      align-content: space-around; } }
+
+.logo {
+  height: 7rem;
+  margin: 0 auto; }
+  @media (max-width: 37.5em) {
+    .logo {
+      margin-top: 1rem; } }
+
+.search {
+  flex: 0 0 30%;
+  margin-right: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  @media (max-width: 37.5em) {
+    .search {
+      order: 1;
+      flex: 0 0 90%;
+      background-color: #f4f2f2;
+      margin-left: 1rem;
+      border-radius: 5px; } }
+  .search__input {
+    text-align: center;
+    font-family: inherit;
+    font-size: .8rem;
+    color: inherit;
+    border: none;
+    padding: .7rem .5rem;
+    padding-left: 2rem;
+    background-color: #f4f2f2;
+    border-radius: 100px;
+    width: 80%;
+    margin-right: -2.5rem;
+    transition: all 0.2s; }
+    .search__input:focus {
+      outline: none;
+      width: 90%;
+      background-color: #f0eeee; }
+    .search__input::-webkit-input-placeholder {
+      font-weight: 100;
+      color: #ccc; }
+  .search__input:focus + .search__button {
+    background-color: #f0eeee; }
+  .search__button {
+    border: none;
+    background-color: #f4f2f2; }
+    .search__button:focus {
+      outline: none; }
+    .search__button:active {
+      transform: translateY(4px); }
+  .search__icon {
+    font-size: 1.3rem;
+    background-color: white;
+    margin-left: -2rem;
+    margin-top: -.5rem;
+    color: #777; }
+    @media (max-width: 37.5em) {
+      .search__icon {
+        background-color: #f4f2f2; } }
+
+.user-nav {
+  height: 100%;
+  flex: 0 0 10%;
+  align-self: stretch;
+  display: flex;
+  align-items: center; }
+  .user-nav > * {
+    padding: 0 2rem;
+    cursor: pointer;
+    height: 100%; }
+    @media only screen and (max-width: 46.875em) {
+      .user-nav > * {
+        padding: 0 1rem; } }
+  .user-nav > *:hover {
+    background-color: #f4f2f2; }
+  .user-nav__icon-box {
+    display: flex;
+    align-items: center;
+    position: relative; }
+  .user-nav__icon {
+    height: 1.3rem;
+    width: 1.3rem;
+    fill: #777; }
+  .user-nav__notification {
+    font-size: .7rem;
+    height: 1.2rem;
+    width: 1.2rem;
+    border-radius: 50%;
+    background-color: #eb2f64;
+    color: #fff;
+    position: absolute;
+    top: 1.5rem;
+    right: 1.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+  .user-nav__user {
+    display: flex;
+    align-items: center; }
+  .user-nav__user-photo {
+    height: 2rem;
+    border-radius: 50%; }
+  .user-nav__user-name {
+    margin-left: 1rem;
+    font-size: .9rem; }
+
+.main {
+  height: 82vh;
+  background-color: red;
+  background-image: linear-gradient(to right, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url("");
+  /*to right means from left to right -- we can also say to left , to top , to right bottom ......... then we have to colors with 0.8 opacity and then .. image*/
+  background-size: cover;
+  background-position: top;
+  position: relative;
+  background-repeat: no-repeat; }
+  @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+    .main {
+      -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+      clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+      height: 95vh; } }
+  @media only screen and (max-width: 56.25em) {
+    .main {
+      -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+      clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%); } }
+  @media only screen and (min-resolution: 192dpi) and (min-width: 37.5em), only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em) {
+    .main {
+      background-image: linear-gradient(to right, rgba(255, 185, 0, 0.8), rgba(255, 119, 48, 0.8)), url(""); } }

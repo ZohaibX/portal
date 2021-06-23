@@ -1,17 +1,14 @@
 import Home from '../pages/Home/home';
 // import Test from '../pages/test';
 import App from '../App';
-// import NotFound from '../pages/not-found';
-// import SignUp from '../pages/auth/signUp';
-// import SignIn from '../pages/auth/signIn';
-// import SignOut from '../pages/auth/signOut';
-// import Upload from '../pages/image-upload/upload';
+import PortalHome from '../pages/Portal/home'
 
 export default [
   {
     ...App,
     routes: [
       { path: '/', ...Home, exact: true },
+      { path: '/portal', ...PortalHome, },
       // { path: `/test`, ...Test },
       // { path: `/image-upload`, ...Upload },
       // { path: '/signUp', ...SignUp, exact: true },
