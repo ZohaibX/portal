@@ -96,7 +96,7 @@ big-desktop -- 1800px +
   .row [class^="col-"] {
     float: left !important; }
     .row [class^="col-"]:not(:last-child) {
-      margin-right: 2rem !important; }
+      margin-right: 6rem !important; }
       @media only screen and (max-width: 56.25em) {
         .row [class^="col-"]:not(:last-child) {
           margin-right: 0;
@@ -105,17 +105,17 @@ big-desktop -- 1800px +
       .row [class^="col-"] {
         width: 100% !important; } }
   .row .col-1-of-2 {
-    width: calc((100% - 2rem) / 2); }
+    width: calc((100% - 6rem) / 2); }
   .row .col-1-of-3 {
-    width: calc((100% - 2 * 2rem) / 3); }
+    width: calc((100% - 2 * 6rem) / 3); }
   .row .col-1-of-4 {
-    width: calc((100% - 3 * 2rem) / 4); }
+    width: calc((100% - 3 * 6rem) / 4); }
   .row .col-2-of-3 {
-    width: calc(2 * ((100% - 2 * 2rem) / 3) + 2rem); }
+    width: calc(2 * ((100% - 2 * 6rem) / 3) + 6rem); }
   .row .col-2-of-4 {
-    width: calc(2 * ((100% - 3 * 2rem) / 4) + 2rem); }
+    width: calc(2 * ((100% - 3 * 6rem) / 4) + 6rem); }
   .row .col-3-of-4 {
-    width: calc(3 * ((100% - 3 * 2rem) / 4) + 2 * 2rem); }
+    width: calc(3 * ((100% - 3 * 6rem) / 4) + 2 * 6rem); }
 
 /*
 $Breakpoint argument choices
@@ -203,7 +203,8 @@ big-desktop -- 1800px +
   text-align: center; }
   @media only screen and (max-width: 56.25em) {
     .about {
-      padding-top: 3rem; } }
+      padding-top: 3rem;
+      padding-left: 7rem; } }
   .about-all {
     text-align: center; }
     .about-all__h4 {
@@ -387,20 +388,145 @@ big-desktop -- 1800px +
     margin-left: 1rem;
     font-size: .9rem; }
 
+/*
+$Breakpoint argument choices
+Phone -- 0 - 600 px 
+tab-port -- 600 - 900 px for tablet portrait 
+tab-land -- 900 - 1200 px for tab landscape 
+[1200 - 1800 ] -- is for desktop we are using and we have made the website with 
+big-desktop -- 1800px + 
+*/
+.book {
+  height: 79.5vh;
+  width: 100%;
+  background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 55%, transparent 40%), url(portal.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  border-radius: .3rem;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.2); }
+  @media only screen and (max-width: 61.875em) {
+    .book {
+      margin-top: 3rem; } }
+  @media only screen and (max-width: 75em) {
+    .book {
+      background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 55%, transparent 40%), url(portal.jpg);
+      background-size: cover; } }
+  @media only screen and (max-width: 56.25em) {
+    .book {
+      background-image: linear-gradient(to right, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 100%), url(portal.jpg);
+      background-size: cover; } }
+  .book__form {
+    width: 57%;
+    padding: 6rem;
+    padding-top: 4rem; }
+    @media only screen and (max-width: 75em) {
+      .book__form {
+        width: 70%; } }
+    @media only screen and (max-width: 56.25em) {
+      .book__form {
+        width: 100%; } }
+
+.form__heading {
+  margin-bottom: 2rem;
+  font-weight: bold;
+  text-align: center;
+  color: black; }
+
+.form__input {
+  font-size: 1.5rem;
+  font-family: inherit;
+  color: inherit;
+  padding: 1.5rem 2rem;
+  border-radius: 2px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+  border-bottom: 1px solid transparent;
+  width: 95%;
+  display: block;
+  transition: all 0.3s; }
+  @media only screen and (max-width: 56.25em) {
+    .form__input {
+      width: 100%; } }
+  .form__input:focus {
+    outline: none;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+    border-bottom: 3px solid #5643fa; }
+  .form__input::-webkit-input-placeholder {
+    color: #999; }
+  .form__input:focus:invalid {
+    border-bottom: 3px solid #ff7730; }
+
+.form__label {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-left: 1rem;
+  display: block;
+  transition: all 0.3s; }
+
+.form__input:placeholder-shown + .form__label {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4rem); }
+
+.form__radio-group {
+  margin-bottom: 2rem;
+  width: 47%;
+  display: inline-block; }
+  @media only screen and (max-width: 56.25em) {
+    .form__radio-group {
+      width: 100%;
+      margin-bottom: 2rem; } }
+
+.form__radio-label {
+  font-size: 1.6rem;
+  cursor: pointer;
+  position: relative;
+  padding-left: 3.5rem; }
+
+.form__radio-button {
+  height: 3rem;
+  width: 3rem;
+  border: 5px solid #5643fa;
+  border-radius: 50%;
+  display: inline-block;
+  position: absolute;
+  top: .4rem;
+  left: 0; }
+  .form__radio-button::after {
+    content: "";
+    display: block;
+    height: 1.3rem;
+    width: 1.3rem;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #5643fa;
+    opacity: 0;
+    transition: all 0.2s; }
+
+.form__radio-input:checked ~ .form__radio-label .form__radio-button::after {
+  opacity: 1; }
+
+.form__radio-input {
+  display: none; }
+
 .main {
-  height: 82vh;
+  height: 80vh;
   background-color: red;
-  background-image: linear-gradient(to right, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url("");
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.1), rgba(41, 40, 255, 0.2)), url(portal.jpg);
   /*to right means from left to right -- we can also say to left , to top , to right bottom ......... then we have to colors with 0.8 opacity and then .. image*/
   background-size: cover;
-  background-position: top;
+  background-position: bottom;
   position: relative;
   background-repeat: no-repeat; }
   @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
     .main {
       -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-      clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-      height: 95vh; } }
+      clip-path: polygon(0 0, 100% 0, 100% 67vh, 0 100%); } }
   @media only screen and (max-width: 56.25em) {
     .main {
       -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);

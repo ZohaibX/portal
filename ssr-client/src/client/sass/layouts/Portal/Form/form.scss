@@ -1,0 +1,159 @@
+@import "../../../abstract/variables";
+@import "../../../abstract/mixins";
+
+
+
+//                                  Two Backgrounds
+
+.book {
+  height: 79.5vh;
+  width: 100%;
+  background-image: linear-gradient(105deg, rgba(255,255,255, .9) 0%, rgba(255,255,255, .9) 55%, transparent 40%),
+      url("../pages/Portal/portal.jpg");
+
+  background-size: cover; // /*it will cover the background in every size of page .. like responsive*/
+  background-position: center; // /*when changing size of screen -- picture position can change .. so we fixed it for top .. means --top position will remain same ... we could say -- bottom , center*/
+  background-repeat: no-repeat;
+
+  // it will be 0 then some percentage and then same percentage again 
+  // but it will start fron 2nd percentage given ..
+  // note -- bcoz of next 2 colors -- 50 50 // we are getting a solid line in btw -- if its 40 20 or some other -- we'll not get a solid line 
+  // -- line in btw will be blurry // but in this case -- we already have a blurry white colour .. so we are using that here
+  // eg background-image: linear-gradient(105deg, rgba($color-white, .9) 20%, rgba($color-white, .9) 40%, orangered 40%)
+
+  // we could also use clip-path may be -- but its a good way for two backgrounds
+  // clip-path is better for diffrent shapes of background
+
+  background-size: 100%; // it works same as cover
+  border-radius: .3rem;
+  box-shadow: 0 1.5rem 4rem rgba($color-black, 0.2);
+
+  // height: 55rem;
+  // testing .. 
+
+  @include respond(990) {
+    margin-top: 3rem;
+  }
+
+  @include respond(tab-land) {
+    background-image: linear-gradient(105deg, rgba(255,255,255, .9) 0%, rgba(255,255,255, .9) 55%, transparent 40%),
+    url("../pages/Portal/portal.jpg");
+
+      background-size: cover;
+  }
+
+  @include respond(tab-port) {
+      background-image: linear-gradient(to right, rgba(255,255,255, .9) 0%, rgba(255,255,255, .9) 100%),
+          url("../pages/Portal/portal.jpg");
+
+      background-size: cover;
+  }
+
+  //                                      Form ...
+
+  &__form {
+      width: 57%; // it can be changed to fix its content inside it
+      padding: 6rem;
+      padding-top: 4rem;
+
+      @include respond(tab-land) {
+          width: 70%;
+      }
+
+      @include respond(tab-port) {
+          width: 100%;
+      }
+  }
+}
+
+.form {
+
+  &__heading {
+      margin-bottom: 2rem;
+      font-weight: bold;
+      text-align: center;
+      color: black;
+  }
+
+  &:not(:last-child) {
+      // margin-bottom: 2rem;
+  }
+
+  &:last-child {
+      // margin-top: -1rem;
+  }
+
+
+
+  //                                      Form - Input
+
+  &__input {
+      font-size: 1.5rem;
+      font-family: inherit;
+      color: inherit; // bcoz forms have their own font family and colors
+      padding: 1.5rem 2rem;
+      border-radius: 2px;
+      background-color: rgba($color-white, .5);
+      border: none;
+      border-bottom: 1px solid transparent;
+      // if i add a border in focus -- then 3px will be created at the moment -- and we don't want that
+      // so we created border here with transparent color and we will color it in focus
+      width: 95%;
+      display: block;
+      transition: all 0.3s;
+
+      @include respond(tab-port) {
+          width: 100%;
+      }
+
+      &:focus {
+          // focus property
+          outline: none;
+          box-shadow: 0 1rem 2rem rgba($color-black, .1);
+          border-bottom: 3px solid $color-tertiary-dark;
+      }
+
+      &::-webkit-input-placeholder {
+          // to style place holder
+          color: $color-gray-dark-2;
+      }
+
+      &:focus:invalid {
+          // when input is focused and invalid
+          border-bottom: 3px solid $color-secondary-dark;
+      }
+  }
+
+  //                                           Form - Label
+
+  // Idea is that -- label will be in a placeholder position and invisible
+  // when placeholder is gone  --  then it will come below 
+
+  &__label {
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-left: 1rem;
+      display: block; // to display as a block is necessary if we wanna treat it as a box 
+      transition: all 0.3s;
+  }
+
+  &__input:placeholder-shown+&__label {
+      // input and label are siblings
+      // + means to access very next sibling when itself 
+      // in this case -- it means until placeholder is shown -- we want to edit label
+
+      // ~ sign -- when sibling is not the very next sibling
+      opacity: 0;
+      visibility: hidden;
+      // when we use opacity // its invisible but its space is occupied but with visibility hidden -- its gone
+      // we cannot add transition in visibility but opacity
+      // so we had to add both of the properties
+      transform: translateY(-4rem);
+  }
+
+  // IDEA is
+  // until placeholder is shown -- label be b -4rem up and invisible
+  // and when placeholder is gone -- it will be on its position with transition
+
+
+  

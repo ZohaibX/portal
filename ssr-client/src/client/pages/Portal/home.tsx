@@ -2,6 +2,9 @@ import * as React from 'react'
 import Helmet from 'react-helmet'
 import "../../css/main.css"
 import navbar from './navbar'
+import form from './form'
+
+const Form = form.component ;
 const Navbar = navbar.component
 
 const head = () => (
@@ -24,9 +27,7 @@ const PortalHome = () => {
       {head()}
       <Navbar />
       
-      <div className="main">
-        
-      </div>
+      <Form />
     </div>
   )
 }
