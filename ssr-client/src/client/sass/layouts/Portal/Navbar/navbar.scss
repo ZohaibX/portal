@@ -4,7 +4,7 @@
 // Header Is Starting Here
 
 .header {
-    height: 9.3rem !important ; // so we describe height of header or navbar ..
+    height: 9.3rem  ; // so we describe height of header or navbar ..
     background-color: #fff;
     // border-bottom: 1px solid $gray-light-2;
 
@@ -20,6 +20,12 @@
     }
 }
 
+.logo-div {
+    display: flex ;
+    justify-content: space-around;
+    align-items: center;
+}
+
 .logo {
     height: 7rem;
     margin: 0 auto;
@@ -28,6 +34,27 @@
       margin-top: 1rem;
   }
 
+}
+
+.logo-text {
+    transform: translate(1rem , .5rem) skew(-12deg);
+    font-size: 1.4rem;
+    line-height: 1 ;
+    
+    &__h3 {
+        font-weight: bolder;
+    }
+
+    &__p {
+        font-weight: bold ;
+    }
+
+    @include respond(670) {
+        transform: translate(1rem , 1rem) skew(-12deg);
+    }
+
+    h3 {
+    }
 }
 
 //                                      Search Box Starts

@@ -15,7 +15,7 @@ const Form = () => {
 
               <div className="form__group">
                 <input
-                  type="text"
+                  type="email"
                   className="form__input"
                   placeholder="Your Email"
                   required
@@ -28,7 +28,7 @@ const Form = () => {
 
               <div className="form__group">
                 <input
-                  type="email"
+                  type="password"
                   className="form__input"
                   placeholder="Your Password"
                   required

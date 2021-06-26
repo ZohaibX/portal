@@ -11,6 +11,15 @@ const Navbar = () => {
 
       <div className="logo-div">
       <img src={'https://project-1-bucket.s3.amazonaws.com/logo-1.png'} alt="" className="logo" />
+
+        <div className="logo-text">
+            <h3 className="logo-text__h3">
+              University
+            </h3>
+            <p className="logo-text__p">
+              Portal
+            </p>
+          </div>
       </div>
 
       <form action="" className="search">
