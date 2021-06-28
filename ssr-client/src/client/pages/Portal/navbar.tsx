@@ -1,11 +1,13 @@
 import * as React from 'react'
 import "../../css/main.css"
-import user from './user.jpg'
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import search from '@fortawesome/fontawesome-free-solid/faSearch'
 
+
 const Navbar = () => {
+  const [searchField , changeSearchField] = React.useState("")
+  
   return(
     <header className="header">
 
@@ -24,6 +26,8 @@ const Navbar = () => {
 
       <form action="" className="search">
         <input
+          value = {searchField}
+          onChange={(e) => changeSearchField(e.currentTarget.value)}
           type="text"
           className="search__input"
           placeholder="Search Departments"

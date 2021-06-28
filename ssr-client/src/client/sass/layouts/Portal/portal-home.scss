@@ -1,6 +1,15 @@
 @import './Navbar/navbar.scss';
 @import "./Form/form.scss";
 
+.info {
+    text-align: center;
+    height: 1.3rem;
+    background-color:orangered;
+    color: black;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
 .main{
   height: 80vh;
   background-color: red;

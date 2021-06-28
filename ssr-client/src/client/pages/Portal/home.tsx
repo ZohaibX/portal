@@ -25,6 +25,10 @@ const PortalHome = () => {
   return(
     <div>
       {head()}
+
+      <div className="info">
+        <p>This is just a showcase portal. Only main components work</p>
+      </div>
       <Navbar />
       
       <Form />
