@@ -1,0 +1,43 @@
+@import "../../../abstract/mixins"; 
+
+.profile-page-background {
+  height: 80vh;
+  width: 80%;
+
+  margin: 0 auto;
+
+  background-image: linear-gradient(to right, rgba(255,255,255, .9) 0%, rgba(255,255,255, .9) 100%),
+          url("../pages/Portal/portal.jpg");
+
+  background-size: cover; // /*it will cover the background in every size of page .. like responsive*/
+  background-position: center; // /*when changing size of screen -- picture position can change .. so we fixed it for top .. means --top position will remain same ... we could say -- bottom , center*/
+  background-repeat: no-repeat;
+
+  // background-size: 100%; // it works same as cover
+  border-radius: .3rem;
+  box-shadow: 0 1.5rem 4rem rgba($color-black, 0.2);
+  
+  @include respond(670) {
+    width: 89%;
+  }
+  @include respond(tab-land) {
+    height: 70vh;
+  }
+
+}
+
+.profile-form {
+  width: 90% ;
+  margin: 0 auto;
+}
+
+pt-4{
+  padding-top: 4rem !important;
+}
+mt-4{
+  margin-top: 6rem !important;
+}
+mb-0{
+  margin-bottom: 0 !important;
+}
+

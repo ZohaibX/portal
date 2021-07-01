@@ -17,6 +17,7 @@ module.exports = {
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.json' , '.css' , '.scss'],
   },
 
+  
   plugins: [new MiniCssExtractPlugin()],
 
   mode: 'development',
@@ -28,7 +29,9 @@ module.exports = {
         test: /\.(ts|js)x?$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
-        
+        options: {
+          presets: ['@babel/react']
+        }
       },
       {
         test: /\.css$/i,

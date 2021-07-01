@@ -7,12 +7,17 @@ import Routes from './client/routes/routes';
 import renderer from './helpers-for-server/renderer';
 import proxy from 'express-http-proxy';
 import CreateStore from './helpers-for-server/server-redux-store';
+import { matchPath } from 'react-router-dom';
+import routes from './client/routes/routes'
 
 const app = express();
 
 // this middleware will convert routes like '/portal/' to '/portal' -- and this is too much important 
 app.use(function(req, res, next) {
+  console.log(req.url);
+  
   if (req.path.length > 1 && /\/$/.test(req.path)) {
+    console.log("req path is: ", req.path)
     var query = req.url.slice(req.path.length)
     res.redirect(301, req.path.slice(0, -1) + query)
   } else {
@@ -21,7 +26,7 @@ app.use(function(req, res, next) {
 });
 
 app.use(express.static('public'));
-app.get('*', (req, res) => {
+app.get('/*', (req, res) => {
   const store = CreateStore(req);
 
   const promises = matchRoutes(Routes, req.path)
@@ -41,7 +46,6 @@ app.get('*', (req, res) => {
     const content = renderer(req, store, context);
 
     if (context.url) {
-      console.log('context url is: ', context.url);
       return res.redirect(301, context.url);
     } // will handle redirection
     // this is how i may redirect to the url, user was already redirected from

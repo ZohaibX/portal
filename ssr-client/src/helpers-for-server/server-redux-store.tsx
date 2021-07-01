@@ -9,7 +9,7 @@ import rootReducer from './../client/Store/reducers/index'; // from store
 import { createLogger } from 'redux-logger';
 const logger = createLogger();
 
-const CreateStore = (req) => {
+const CreateStore = (req: any) => {
   const serverAxiosInstance = axios.create({
     baseURL:
       'http://ingress-nginx-controller.ingress-nginx.svc.cluster.local/api',

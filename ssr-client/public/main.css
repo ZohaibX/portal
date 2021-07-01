@@ -488,6 +488,44 @@ big-desktop -- 1800px +
   visibility: hidden;
   transform: translateY(-4rem); }
 
+/*
+$Breakpoint argument choices
+Phone -- 0 - 600 px 
+tab-port -- 600 - 900 px for tablet portrait 
+tab-land -- 900 - 1200 px for tab landscape 
+[1200 - 1800 ] -- is for desktop we are using and we have made the website with 
+big-desktop -- 1800px + 
+*/
+.profile-page-background {
+  height: 80vh;
+  width: 80%;
+  margin: 0 auto;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 100%), url(portal.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: .3rem;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.2); }
+  @media only screen and (max-width: 41.875em) {
+    .profile-page-background {
+      width: 89%; } }
+  @media only screen and (max-width: 75em) {
+    .profile-page-background {
+      height: 70vh; } }
+
+.profile-form {
+  width: 90%;
+  margin: 0 auto; }
+
+pt-4 {
+  padding-top: 4rem !important; }
+
+mt-4 {
+  margin-top: 6rem !important; }
+
+mb-0 {
+  margin-bottom: 0 !important; }
+
 .info {
   text-align: center;
   height: 1.3rem;

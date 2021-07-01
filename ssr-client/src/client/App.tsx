@@ -5,7 +5,7 @@ import { renderRoutes } from 'react-router-config';
 
 import "./css/main.css"
 
-const App = ({ route }: any) => {
+const App = ({ route }: any) => {  
   
   return (
     <div>

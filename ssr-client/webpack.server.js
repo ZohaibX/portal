@@ -2,6 +2,8 @@ const path = require('path');
 const webpackNodeExternals = require('webpack-node-externals');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
+const dev = process.env.NODE_ENV !== "production";
+
 //! .babelrc file is a necessary file for this
 
 module.exports = {
@@ -25,7 +27,7 @@ module.exports = {
   },
 
 
-  mode: 'development',
+  mode: dev ? "development" : "production",
 
   // tell webpack, to apply babel on every file, it runs through
   module: {
@@ -34,7 +36,9 @@ module.exports = {
         test: /\.(ts|js)x?$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
-        
+        options: {
+          presets: ['@babel/react']
+        }
       },
       {
         test: /\.css$/i,
