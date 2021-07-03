@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import "../../css/main.css"
 
 const Form = () => {
@@ -42,9 +43,15 @@ const Form = () => {
 
               <div className="form__group">
                 {/* Added some properties in a btn class -- for button */}
-                <button className="btn btn-green margin-bottom-2">
+                <button className="btn btn-green margin-bottom-2 form-btn">
                   Go to your account &rarr;
                 </button>
+              </div>
+
+              <div className="form-group">
+                <p className="create-account">
+                  If u don't have an account. Create your Account <Link className="create-account__link" to="/portal/profile-setup">Here</Link>
+                </p>
               </div>
             </form>
           </div>

@@ -155,6 +155,26 @@
   // IDEA is
   // until placeholder is shown -- label be b -4rem up and invisible
   // and when placeholder is gone -- it will be on its position with transition
+}
 
+.create-account{
+    margin-top: 2rem;
+    font-weight: 400;
+    font-size: .8rem;
 
+    &__link {
+        color: black;
+        font-weight: bold;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
+
+.form-btn {
+    &:hover {
+        background-color: $color-tertiary-light;
+        color: white;
+    }
 }

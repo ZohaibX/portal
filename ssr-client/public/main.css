@@ -180,9 +180,6 @@ big-desktop -- 1800px +
     animation-name: moveInLeft;
     animation-duration: 1s;
     animation-timing-function: ease-out; }
-    @media (max-width: 37.5em) {
-      .intro__h1 {
-        font-size: 1rem; } }
     .intro__h1:hover {
       text-decoration: none;
       cursor: pointer; }
@@ -194,9 +191,6 @@ big-desktop -- 1800px +
     letter-spacing: 0.1rem;
     animation: moveInRight 1s ease-out;
     /* one line animation */ }
-    @media (max-width: 37.5em) {
-      .intro__h4 {
-        font-size: .5rem; } }
 
 .about {
   padding-top: 2rem;
@@ -214,9 +208,6 @@ big-desktop -- 1800px +
       font-size: 1.5rem;
       font-weight: bold;
       /* one line animation */ }
-      @media (max-width: 37.5em) {
-        .about-all__h4 {
-          font-size: .9rem; } }
   .about-1 {
     padding-left: 3rem;
     margin: 0 auto; }
@@ -277,11 +268,6 @@ big-desktop -- 1800px +
   display: flex;
   justify-content: space-around;
   align-items: center; }
-  @media (max-width: 37.5em) {
-    .header {
-      flex-wrap: wrap;
-      height: 15rem;
-      align-content: space-around; } }
 
 .logo-div {
   display: flex;
@@ -291,9 +277,6 @@ big-desktop -- 1800px +
 .logo {
   height: 7rem;
   margin: 0 auto; }
-  @media (max-width: 37.5em) {
-    .logo {
-      margin-top: 1rem; } }
 
 .logo-text {
   transform: translate(1rem, 0.5rem) skew(-12deg);
@@ -306,6 +289,9 @@ big-desktop -- 1800px +
   @media only screen and (max-width: 41.875em) {
     .logo-text {
       transform: translate(1rem, 1rem) skew(-12deg); } }
+  @media only screen and (max-width: 41.875em) {
+    .logo-text {
+      transform: translate(1rem, 1rem) skew(-12deg); } }
 
 .search {
   flex: 0 0 30%;
@@ -313,13 +299,6 @@ big-desktop -- 1800px +
   display: flex;
   align-items: center;
   justify-content: center; }
-  @media (max-width: 37.5em) {
-    .search {
-      order: 1;
-      flex: 0 0 90%;
-      background-color: #f4f2f2;
-      margin-left: 1rem;
-      border-radius: 5px; } }
   .search__input {
     text-align: center;
     font-family: inherit;
@@ -355,9 +334,6 @@ big-desktop -- 1800px +
     margin-left: -2rem;
     margin-top: -.5rem;
     color: #777; }
-    @media (max-width: 37.5em) {
-      .search__icon {
-        background-color: #f4f2f2; } }
 
 .user-nav {
   height: 100%;
@@ -488,6 +464,20 @@ big-desktop -- 1800px +
   visibility: hidden;
   transform: translateY(-4rem); }
 
+.create-account {
+  margin-top: 2rem;
+  font-weight: 400;
+  font-size: .8rem; }
+  .create-account__link {
+    color: black;
+    font-weight: bold; }
+    .create-account__link:hover {
+      text-decoration: none; }
+
+.form-btn:hover {
+  background-color: #2928ff;
+  color: white; }
+
 /*
 $Breakpoint argument choices
 Phone -- 0 - 600 px 
@@ -497,7 +487,7 @@ tab-land -- 900 - 1200 px for tab landscape
 big-desktop -- 1800px + 
 */
 .profile-page-background {
-  height: 80vh;
+  height: 70vh !important;
   width: 80%;
   margin: 0 auto;
   background-image: linear-gradient(to right, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 100%), url(portal.jpg);
@@ -506,16 +496,9 @@ big-desktop -- 1800px +
   background-repeat: no-repeat;
   border-radius: .3rem;
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.2); }
-  @media only screen and (max-width: 41.875em) {
+  @media (max-width: 41.25em) {
     .profile-page-background {
-      width: 89%; } }
-  @media only screen and (max-width: 75em) {
-    .profile-page-background {
-      height: 70vh; } }
-
-.profile-form {
-  width: 90%;
-  margin: 0 auto; }
+      height: 80vh !important; } }
 
 pt-4 {
   padding-top: 4rem !important; }
@@ -525,6 +508,38 @@ mt-4 {
 
 mb-0 {
   margin-bottom: 0 !important; }
+
+.profile-form {
+  width: 80% !important;
+  margin: 0 auto;
+  padding-top: 3rem; }
+  .profile-form__email {
+    text-align: center; }
+    .profile-form__email-label {
+      text-align: center; }
+  .profile-form__phone {
+    width: 40% !important;
+    margin: 0 auto !important;
+    text-align: center; }
+    @media only screen and (max-width: 25em) {
+      .profile-form__phone {
+        width: 50% !important; } }
+    .profile-form__phone-label {
+      text-align: center;
+      margin-top: .5rem; }
+  .profile-form-btn {
+    text-align: center; }
+    .profile-form-btn-style {
+      width: 30%; }
+      @media (max-width: 41.25em) {
+        .profile-form-btn-style {
+          width: 40% !important; } }
+      .profile-form-btn-style:hover {
+        background-color: #2928ff;
+        color: white; }
+
+.profile-select {
+  text-align: center; }
 
 .info {
   text-align: center;

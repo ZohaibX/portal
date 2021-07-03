@@ -1,7 +1,7 @@
 @import "../../../abstract/mixins"; 
 
 .profile-page-background {
-  height: 80vh;
+  height: 70vh !important;
   width: 80%;
 
   margin: 0 auto;
@@ -17,18 +17,11 @@
   border-radius: .3rem;
   box-shadow: 0 1.5rem 4rem rgba($color-black, 0.2);
   
-  @include respond(670) {
-    width: 89%;
-  }
-  @include respond(tab-land) {
-    height: 70vh;
+  @include respond(660) {
+    height: 80vh !important;
   }
 
-}
 
-.profile-form {
-  width: 90% ;
-  margin: 0 auto;
 }
 
 pt-4{
@@ -41,3 +34,58 @@ mb-0{
   margin-bottom: 0 !important;
 }
 
+.profile-form{
+  width: 80% !important ;
+  margin: 0 auto;
+  
+  padding-top: 3rem;
+
+  
+  &__email {
+    text-align: center;
+    &-label {
+      text-align: center;
+    }
+  }
+
+  &__phone {
+    width: 40% !important;
+    margin: 0 auto !important;
+    text-align: center;
+
+    @include respond(phone-small) {
+      width: 50% !important;
+    }
+  
+    &-label {
+      text-align: center;
+      margin-top: .5rem;
+    }
+  }
+
+  &-btn {
+
+    text-align: center;
+
+    &-style {
+      width: 30%;
+
+      @include respond(660) {
+        width: 40% !important;
+      }
+
+      &:hover {
+
+        background-color: $color-tertiary-light;
+        color: white;
+      }
+
+      
+    }
+  }
+  
+}
+
+.profile-select {
+  text-align: center;
+}
