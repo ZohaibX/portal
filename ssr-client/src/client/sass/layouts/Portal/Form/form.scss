@@ -49,6 +49,10 @@
       background-size: cover;
   }
 
+  @include respond(450) {
+    height: 95vh;
+  }
+
   //                                      Form ...
 
   &__form {
@@ -176,5 +180,18 @@
     &:hover {
         background-color: $color-tertiary-light;
         color: white;
+    }
+    @include respond(530) {
+        width: 100%;
+        height: 4rem;
+    }
+    @include respond(450)  {
+        height: 5rem;
+    }
+
+    &__decoration {
+        @include respond(450) {
+            display: none;
+        }
     }
 }

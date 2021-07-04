@@ -44,7 +44,7 @@ const Form = () => {
               <div className="form__group">
                 {/* Added some properties in a btn class -- for button */}
                 <button className="btn btn-green margin-bottom-2 form-btn">
-                  Go to your account &rarr;
+                   Go to your account <span className="form-btn__decoration" > &rarr; </span>
                 </button>
               </div>
 

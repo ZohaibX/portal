@@ -13,7 +13,7 @@
     align-items: center;
 
 
-    @include respond(phone) {
+    @include respond(600) {
         flex-wrap: wrap;
         height: 15rem;
         align-content: space-around; // space around on y axis
@@ -30,7 +30,7 @@
     height: 7rem;
     margin: 0 auto;
  
-    @include respond(phone) {
+    @include respond(600) {
       margin-top: 1rem;
   }
 
@@ -69,7 +69,7 @@
     justify-content: center;
 
 
-    @include respond(phone) {
+    @include respond(600) {
         order: 1; // right most .. and we have a flex wrap in parent -- so it can move to next line 
         flex: 0 0 90%; // 100% of the space it can occupy when logo and navigation also exists -- not on the same line -- but its a same flex
         // and remember -- its not a search input -- its a whole search block
@@ -137,7 +137,7 @@
         margin-top: -.5rem;
         color: $gray-dark-2;
 
-        @include respond(phone) {
+        @include respond(600) {
           background-color: $gray-light-2; 
         }
     }

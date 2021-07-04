@@ -44,6 +44,34 @@ big-desktop -- 1800px +
         }
     }
 
+    @if $breakpoint==450 {
+        @media only screen and (max-width: 28.125em) {
+            // 450px
+            @content;
+        }
+    }
+
+    @if $breakpoint==500 {
+        @media only screen and (max-width: 31.25em) {
+            // 500px
+            @content;
+        }
+    }
+
+    @if $breakpoint==530 {
+        @media only screen and (max-width: 33.125em) {
+            // 530px
+            @content;
+        }
+    }
+
+    @if $breakpoint==600 {
+        @media only screen and (max-width: 37.5em) {
+            // 600px
+            @content;
+        }
+    }
+
     @if $breakpoint==660 {
         @media (max-width: 41.25em) {
             // 660px
@@ -75,6 +103,13 @@ big-desktop -- 1800px +
     @if $breakpoint==tab-port {
         @media only screen and (max-width: 56.25em) {
             // 900px
+            @content;
+        }
+    }
+
+    @if $breakpoint==990 {
+        @media only screen and (max-width: 61.875em) {
+            // 990px
             @content;
         }
     }

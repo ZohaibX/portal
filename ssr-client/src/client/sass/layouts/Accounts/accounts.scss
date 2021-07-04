@@ -1,0 +1,72 @@
+@import "../../abstract/variables";
+@import "../../abstract/mixins";
+
+.accounts {
+
+  height: 90vh !important;
+
+  &-table {
+    width: 60%;
+    margin: 0 auto;
+    font-weight: bold;
+
+    
+    
+    
+    @include respond(tab-port) {
+      width: 80%;
+    }
+    @include respond(660) {
+      width: 100%;
+    }
+
+    &__btn-decoration {
+      @include respond(500) {
+        display: none;
+      }
+    }
+  }
+
+  &-pagination {
+    width: 30% !important;
+    margin: 0 auto !important;
+    
+    @include respond(tab-port){
+      width: 50% !important;
+    }
+    @include respond(530){
+      width: 100% !important;
+    }
+
+  }
+}
+.pagination-nav {
+  color: red;
+  height: 100%;
+} 
+
+.sort-btn {
+  border: none;
+        background-color: $gray-light-2;
+        // transform: translateY(2px);
+
+        &:focus {
+            outline: none;
+        }
+
+        &:active {
+            transform: translateY(4px); // when it is clicked 
+        }
+    &-icon{
+      font-size: 1.3rem;
+        background-color: white; // remove the grey default bg
+
+        margin-left: -2rem ;
+        margin-top: -.5rem;
+        color: $gray-dark-2;
+
+        @include respond(600) {
+          background-color: $gray-light-2; 
+        }
+    }
+}

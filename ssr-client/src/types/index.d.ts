@@ -15,3 +15,5 @@ declare module '*.png' {
 
 declare module '@fortawesome/fontawesome-pro';
 declare module '@fortawesome/react-fontawesome';
+
+
