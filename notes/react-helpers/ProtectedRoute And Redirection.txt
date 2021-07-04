@@ -1,0 +1,52 @@
+import React from "react";
+import { gettingUserData } from "../services/loginUserServices";
+import { Route } from "react-router-dom";
+import { Redirect } from "react-router-dom";
+
+// only changes we may b needed are .. gettingUserData (userDataFromBackend) can b named something diffrent and /login can b named /signIn
+const ProtectedRoute = ({ path, component: Component, render, ...rest }) => {
+  // component should be Component
+	// Important note :- Make Sure that we are getting user from gettingUser function or any other function by me
+	// here im using gettingUser but in my 2nd practice -- im using contexts and hooks .. so some way is changed
+
+  return (
+    <Route
+      path={path}
+      {...rest} // for rest of the props
+      render={(props) => {
+        console.log(props);
+        if (!gettingUserData()) 
+          return (
+            <Redirect
+              to={{
+                pathname: "/loginUser", 
+                state: { from: props.location }, // login User props have different properties , state is normally undefined . now we are setting the state to the location from where we are being redirected -- like movie form
+                // its further work is in login page where we have set window.location
+              }}
+            />
+          );
+        return Component ? <Component {...props} /> : render(props); // rendering component dynamically ... for the case if component is nul
+      }}
+    />
+  );
+};
+
+export default ProtectedRoute;
+
+
+
+IN LOGIN FORM WHERE WE WERE DIRECTED AND NOW WE HAVE TO REDIRECT TO THE PREVIOUS LOCATION
+
+//only change we may have to do is .. this.props vs props
+try {
+      await loginUser.login(this.state.Data); // in backend -- when user login -- it get a jwt token in its body
+      // state is some property in props when we are being redirected or when we come from the route
+      const { state } = this.props.location; // state will have some location if we are being redirected -- and if we simply went to the loginUser route -- state will be null
+      window.location = state ? state.from.pathname : "/"; // if state is not null -- it will have this property
+    } catch (error) {
+      if (error.response && error.response.status === 400) {
+        const errors = { ...this.state.errors };
+        errors.email = error.response.data; // we have error responses in error.response.data
+        this.setState({ errors });
+      }
+    }

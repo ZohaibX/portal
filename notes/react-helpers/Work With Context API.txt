@@ -1,0 +1,6 @@
+IN context module .. we have createContext and context.provider method ..
+then we'll wrap a main root of a tree component with (R)
+Then in every component related to the root .. i can use useContext(createContext(export)) and destructure the state and state updating functions ..
+
+i can use useState Hook to create a state 
+can use useEffect to make  a lifecycle .. and i can find out how to use that with cdm 

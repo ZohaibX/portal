@@ -1,0 +1,4 @@
+cubic bezier is for transition timing functions
+
+https://easings.net/ // for easy
+https://cubic-bezier.com/#.17,.67,.83,.67 // actual website of cubic bezier

@@ -1,0 +1,22 @@
+_.get(movie , path) // if we have an object like movie.genre.name and path means genre.name and movie means movie -- to dono ko akatthha kr de gha
+
+_(movies).slice(startIndex).take(moviesToBeInASinglePage).value(); // jahaan se chaahain -- wahaan se array ko edit kr de gha ....
+
+_.orderBy(movies , [path] , [order]) // movies is an array and it will take every element of array , path will be like genre.name .. array k har element of us ki path k mutaabiq order mai le kr ae gha ,, and order is 'asc' or 'desc'
+
+_.range(1st number , total numbers + 1) //  if _.range(1 , 3 + 1) . then we get [1,2,3]
+
+_.pick(object , ["property1" , "property2"])
+
+import {compose , pipe} from 'lodash/fp";
+for example we have a nesting functions calling 
+like wrapInDiv(toLowerCase(trim(input))) // this method will trim input .. then toLowerCase and then wrap it 
+to make it cleaner .. const composed = compose(wrapInDiv , toLowerCase , trim) and then compose(input)
+
+something same like pipe .. both are in redux 2nd section -- 6th video
+
+
+Note 
+.get mai hum array k kisi element ko pakar kr us ko uski specific path pr le kr jaa sakte hai
+.range mai hamare paas unknown numbers hon gai .. like 3 ...  .range 1st number se le kr 3 tak ki array bnaa de gha
+.pick mai ek object hai or hum apni marxi se uski selected properties ko show krna chahte hain to thats y we use it

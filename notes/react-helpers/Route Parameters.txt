@@ -1,0 +1,1 @@
+Route Parameters are used in movieTable.jsx and movieForm.jsx

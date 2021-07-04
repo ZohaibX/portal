@@ -1,0 +1,3 @@
+npm i react-router-bootstrap
+and cover every href tag with <LinkContainer to=""> href whole tag </LinkContainer
+don't forget to add to="" with this technique

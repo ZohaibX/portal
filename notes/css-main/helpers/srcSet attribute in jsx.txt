@@ -1,0 +1,4 @@
+srcSet={`
+    ${require('../../assets/images/logo/logo@2x.png')} 2x, 
+    ${require('../../assets/images/logo/logo@3x.png')} 3x
+  `}
