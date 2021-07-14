@@ -32,6 +32,16 @@ spec:
                 secretKeyRef: 
                   name: mail-key
                   key: MAIL_KEY
+            - name: S3_ACCESS_KEY
+              valueFrom: 
+                secretKeyRef: 
+                  name: s3-access-key
+                  key: S3_ACCESS_KEY
+            - name: S3_SECRET_KEY
+              valueFrom: 
+                secretKeyRef: 
+                  name: se-secret-key
+                  key: S3_SECRET_KEY
             - name: NATS_CLIENT_ID
               valueFrom:
                 fieldRef:

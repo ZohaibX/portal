@@ -1,0 +1,1 @@
+# for gke_sa_key -- go to gke -> iam -> service-account and create account and key json key
