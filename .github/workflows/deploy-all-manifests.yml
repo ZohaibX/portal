@@ -34,6 +34,7 @@ jobs:
           cluster_name: ${{ env.GKE_CLUSTER }}
           location: ${{ env.GKE_ZONE }}
           credentials: ${{ secrets.GKE_SA_KEY }}
+          # for gke_sa_key -- go to gke -> iam -> service-account and create account and key json key
 
       # Deploy the Manifest
       - name: Deploy
