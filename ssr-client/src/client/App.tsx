@@ -1,11 +1,16 @@
 import * as React from 'react';
 import { renderRoutes } from 'react-router-config';
+import { connect } from 'react-redux';
 // import Header from './components/header';
 // import { fetchCurrentUser } from './Store/actions';
 
 import "./css/main.css"
+import { fetchCurrentUser } from './Store/actions';
 
-const App = ({ route }: any) => {  
+const App = ({ route , currentUser }: any) => {  
+
+  console.log(currentUser);
+  
   
   return (
     <div>
@@ -14,7 +19,11 @@ const App = ({ route }: any) => {
   );
 };
 
+function mapStateToProps({ currentUser }: any) {
+  return { currentUser };
+}
+
 export default {
-  component: App,
-  // loadData: ({ dispatch }) => dispatch(fetchCurrentUser()),
+  component: connect(mapStateToProps )(App),
+  loadData: ({ dispatch }: any) => dispatch(fetchCurrentUser()),
 };

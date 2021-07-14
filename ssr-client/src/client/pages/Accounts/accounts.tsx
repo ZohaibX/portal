@@ -5,8 +5,10 @@ import Form from 'react-bootstrap/Form'
 const Navbar = navbar.component ;
 import '../../css/main.css'
 import _ from 'lodash';
-
+import {fetchAllAccountRequests} from '../../Store/actions/index'
 import Pagination from './pagination';
+import { connect } from 'react-redux';
+import useRequest from '../../hooks/use-request';
 
 // font-awesome 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
@@ -23,6 +25,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import SearchField from './searchField';
+import { FetchAllAccounts } from '../../Store/reducers/fetch-all-accounts';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
   table: {
@@ -67,26 +71,35 @@ const head = () => (
   </Helmet>
 );
 
-const Profile = () => {
+const Profile = (props: any) => {
   const classes = useStyles();
 
-  const rows = ["zohaibbutt045@gmail.com" , "zohaibbutt283@gmail.com" , 
-  "sp19-bcs-003@cuilahore.edu.pk" , "portal@zohaib-x.com" , "port1al@zohaib-x.com" , "por12tal@zohaib-x.com",
-  "sp19-bcs-003@cuilahor213e.edu.pk" , "portal@zohaib321-x.com" , "portal@zoha12ib-x.com" , "port3al@zohaib-x.com", ]
+  React.useEffect(() => {
+    // props.fetchAllAccountRequests() calling it in loadData 
+  }, [])
+
+  const { doRequest, error } = useRequest(
+    '/api/accounts/create-account',
+    { },
+    'post')
+
 
   // searching 
   const [searchField , changeSearchField] = React.useState("")
 
+  const rows = props.fetchAllAccounts.fetchAllAccounts.map((item: any) => item.email);
+  
+
   // filtering starts
   const searchedEmails = searchField ? 
-                        rows.filter((row: string) => row.toLowerCase().startsWith(searchField.toLowerCase())):
+                        rows.filter((row: any) => row.toLowerCase().startsWith(searchField.toLowerCase())):
                         rows ;
   // filtering ends
 
   // Sorting  Starts
   const [sort , changeSort] = React.useState(false);
   const sortRows = () => {
-    return sort ? searchedEmails.sort((a,b) => a.localeCompare(b)): searchedEmails // will even compare letters with different styles
+    return sort ? searchedEmails.sort((a: any,b: any) => a.localeCompare(b)): searchedEmails // will even compare letters with different styles
   }
   const sortedRows = sortRows()
   
@@ -115,6 +128,19 @@ const Profile = () => {
     updateCurrentPage(1)
     changeSort(sort? false: true)
   }
+
+
+  
+  const approve = (email: string) => {
+    
+    
+
+    if(error) alert(error)
+    else {
+      doRequest({ redirectPath: '' , email }) // piece of body sending from here
+    };
+  }  
+
   return (
     <div>
       {head() }
@@ -145,7 +171,7 @@ const Profile = () => {
                     </TableCell>
                     <TableCell align="right" className={classes.tableCell} >
                     <div className="form__group">
-                      <button className="btn btn-green  form-btn">
+                      <button className="btn btn-green  form-btn" onClick={() => approve(email)}>
                         Approve <span className="accounts-table__btn-decoration"> &rarr; </span>
                       </button>
                     </div>
@@ -158,11 +184,25 @@ const Profile = () => {
           
           </div>
           <Pagination.component {...paginationProps}  />
+
+          <div className="alert alert-primary alert-manual" role="alert">
+              
+              After Approving Your Account - You may Go and Sign In by &nbsp;
+              <Link to="/portal" className="alert-manual-link" >
+                 clicking here
+            </Link>
+          </div>
       </div>
     </div>
   )
 }
 
+const mapStateToProps: any = ( fetchAllAccounts: any) => {
+  
+  return { fetchAllAccounts };
+}
+
 export default {
-  component: Profile
+  component: connect(mapStateToProps)(Profile) ,
+  loadData: ({ dispatch }: any) => dispatch(fetchAllAccountRequests()),
 }

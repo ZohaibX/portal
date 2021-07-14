@@ -32,8 +32,9 @@ router.post("/api/users/sign-in" , async (req , res) => {
 
     //? Generating a JWT token
     const userJwt = jwt.sign(
-      { id: existingUser.id, email: existingUser.email , accountType: existingUser.accountType  },
-      process.env.JWT_KEY!
+      { id: existingUser.id, email: existingUser.email , accountType: existingUser.accountType },
+      process.env.JWT_KEY! ,
+      { expiresIn: '5m'}
       // TS thinks that it is string or undefined -- so we are adding n if statement in index.js
       // but TS want that if statement to be in this same file -- so we use (!)
       // (!) means that we have already checked it .. it is defined

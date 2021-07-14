@@ -7,6 +7,7 @@ import sendMail from '../services/mailing/server'
 import { textSpanOverlapsWith } from 'typescript';
 import { natsWrapper } from '../services/nats/nats-wrapper';
 import { AccountCreatePublisher } from '../events/publishers/account-create';
+import { BadRequestError } from '@zbprojector/project1';
 
 
 
@@ -50,7 +51,12 @@ router.post("/api/accounts/create-account" , async(req,  res) => {
       
       const text = `Your Password is ${password}`
       console.log(text)
-     sendMail(email , text) //uncomment this when app is ready
+     
+    try {
+      sendMail(email , text) //uncomment this when app is ready
+    } catch (error) {
+      throw new BadRequestError(error)
+    }
 
     res.send(emailExist)
   

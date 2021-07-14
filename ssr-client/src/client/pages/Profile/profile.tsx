@@ -12,6 +12,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import useRequest from '../../hooks/use-request';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme: Theme) =>
 createStyles({
@@ -29,10 +31,10 @@ createStyles({
 
 const head = () => (
   <Helmet>
-    <title>{`Setup Your Profile`}</title>
+    <title>{`Setup Your Account`}</title>
     <link rel="shortcut icon" href="https://project-1-bucket.s3.amazonaws.com/logo-1.png" />
     {/* // this is how we will make our title dynamic */}
-    <meta property='og:title' content='Setup Your Profile'></meta>
+    <meta property='og:title' content='Setup Your Account'></meta>
     <meta property="og:image" content="https://project-1-bucket.s3.amazonaws.com/logo-1.png" />
     {/* // this title is for SEO -- to identify this page title  */}
     {/* // we normally have to add 4 required meta tags and we can add more optional meta tags for SEO */}
@@ -40,11 +42,35 @@ const head = () => (
   </Helmet>
 );
 
-const Profile = () => {
+const Profile = (props: any) => {
   const classes = useStyles();
   const [rollNo , setRollNo] = React.useState("")
   const [section , setSection] = React.useState("")
   const [department , setDepartment] = React.useState("")
+  const [email , setEmail] = React.useState("")
+  const [phone , setPhone] = React.useState("")
+
+  const [goAccountsDpt , changeGoAccountsDpt] = React.useState(false)
+
+  const { doRequest, error } = useRequest(
+    '/api/accounts/request-for-registration',
+    { email, department , section , phone , rollNo },
+    'post'
+  );
+
+  React.useEffect(() => {
+    console.log(props);
+  }, []);
+
+  const submit = (e: any) => {
+    e.preventDefault();
+
+    if(error) alert(error)
+    else {
+      doRequest({ redirectPath: '' }) 
+      changeGoAccountsDpt(true)
+    };
+  }
 
   const rollNoFakeArray = [3,6,9,12,15,18,21,90,39,108,120,123,126,129,132]
 
@@ -63,13 +89,15 @@ const Profile = () => {
       <Navbar />
 
       <div className=" profile-page-background">
-        <form action="" className="form">
+        <form action="" className="form" onSubmit={submit}>
           <div className="form__group profile-form" >
                 <input
                   type="email"
                   className="form__input profile-form__email"
                   placeholder="Your Email"
                   required
+                  value = {email} 
+                  onChange={(e: any) => setEmail(e.currentTarget.value)}
                   id="name"
                 />
                 <label htmlFor="name" className="form__label profile-form__email-label">
@@ -125,10 +153,12 @@ const Profile = () => {
             <div className="form__group profile-form" >
                 <input
                   type="tel"
-                  pattern="[0-9]{4}-[0-9]{7}"
+                  // pattern="[0-4]{4}-[0-9]{7}"
                   className="form__input profile-form__phone"
                   placeholder="0123-3456789"
                   required
+                  value = {phone} 
+                  onChange={(e: any) => setPhone(e.currentTarget.value)}
                   id="phone"
                 />
                 <label htmlFor="phone" className="form__label profile-form__phone-label">
@@ -142,6 +172,14 @@ const Profile = () => {
                   Submit &rarr;
                 </button>
             </div>
+
+            { goAccountsDpt && <div className="alert alert-primary alert-manual" role="alert">
+              
+              Go to Accounts Department by Yourself - 
+              <a href="/portal/accounts-approval-administration" className="alert-manual-link" onClick={() => changeGoAccountsDpt(false)}>
+                 to approve your account
+            </a>
+          </div> }
 
         </form >
       </div>

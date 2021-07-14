@@ -1,7 +1,7 @@
 @import "../../../abstract/mixins"; 
 
 .profile-page-background {
-  height: 70vh !important;
+  height: 75vh !important;
   width: 80%;
 
   margin: 0 auto;
@@ -88,4 +88,21 @@ mb-0{
 
 .profile-select {
   text-align: center;
+}
+
+.alert-manual {
+  width: 60%;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 1rem;
+  color: black;
+
+  &-link {
+    color: inherit ;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }
