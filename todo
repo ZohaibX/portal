@@ -9,6 +9,8 @@ REDIS IS USED IN AUTH SRV - get-courses route and course-created listener
 APPLY PAGINATION, SORTING AND FILTERATION in other screens of ssr
 DO Backend Frontend Saath saath
 
+//
+
 DO'S 
 Frontend:-
 	CSS (3 - to be done Again)

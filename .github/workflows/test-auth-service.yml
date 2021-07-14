@@ -4,7 +4,7 @@ name: tests-auth # CHANGE THIS
 on:
   pull_request: # will run only when pull request is made or updated
     paths: # run the job only when changes on this path has applied
-      - 'auth/**'  # CHANGE THIMS 
+      - 'auth/**'  # any change in this folde will cause this file to run on CI/CD //  CHANGE THIMS 
 
 jobs:
   build:
