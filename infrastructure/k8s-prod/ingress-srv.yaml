@@ -5,10 +5,11 @@ metadata: #meta
   name: ingress-service
   annotations:
     kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/use-regex: 'true'
+    nginx.ingress.kubernetes.io/rewrite-target: /$1 # rewriting target
 spec:
   rules:
-    - http:
+    - host: www.goldlacpaints.online # new line - add this line after cert install and its file push
+      http:
         paths:
           - path: /?(.*) # idk but ssr is not leaving this exact route
             backend:

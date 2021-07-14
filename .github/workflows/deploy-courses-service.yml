@@ -59,6 +59,7 @@ jobs:
         run: |-
           kubectl set image deployments/courses-depl courses=03004968719/portal-courses:${{ github.sha }}
           kubectl apply -f infrastructure/k8s/courses/courses-depl.yaml
-          kubectl rollout restart deployment courses-depl # restart, so it can use newest image
+          kubectl rollout restart deployment courses-depl 
           kubectl get services -o wide
       #! Change This
+      # restart, so it can use newest image

@@ -59,6 +59,7 @@ jobs:
         run: |-
           kubectl set image deployments/accounts-depl accounts=03004968719/portal-accounts:${{ github.sha }}
           kubectl apply -f infrastructure/k8s/accounts/accounts-depl.yaml
-          kubectl rollout restart deployment accounts-depl # restart, so it can use newest image
+          kubectl rollout restart deployment accounts-depl 
           kubectl get services -o wide
       #! Change This
+      # restart, so it can use newest image
