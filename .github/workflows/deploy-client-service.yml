@@ -58,7 +58,7 @@ jobs:
       - name: Deploy
         run: |-
           kubectl set image deployments/ssr-depl ssr=03004968719/portal-client:${{ github.sha }}
-          kubectl apply -f infrastructure/k8s/ssr-client/ssr-depl.yaml
+          kubectl apply -f infrastructure/k8s/ssr-client/client-depl.yaml
           kubectl rollout restart deployment ssr-depl # restart, so it can use newest image
           kubectl get services -o wide
       #! Change This
