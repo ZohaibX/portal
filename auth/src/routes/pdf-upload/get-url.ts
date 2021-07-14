@@ -4,14 +4,13 @@ import { requireAuth, currentUser } from '@zbprojector/project1';
 import express, { Request, Response } from 'express';
 import AWS from 'aws-sdk';
 import { v1 as uuid } from 'uuid';
-import {keys} from '../profile-picture/keys'
 
 // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html
 
 const s3 = new AWS.S3({
   signatureVersion: 'v4',
-  accessKeyId: keys.ACCESS_KEY,
-  secretAccessKey: keys.SECRET_KEY,
+  accessKeyId: process.env.S3_ACCESS_KEY,
+  secretAccessKey: process.env.S3_SECRET_KEY,
 });
 
 const router = express.Router();
