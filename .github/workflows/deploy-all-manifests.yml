@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'infrastructure/**' # any change in here will cause this file - to update
+      - 'infrastructure/**' # any change in here will cause this file - to update -- CHANGE THIS  
 
 env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}

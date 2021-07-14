@@ -1,11 +1,11 @@
-name: deploy-auth #! Change This
+name: deploy-accounts #! Change This
 
 on:
   push: # when we pull and merge the code from some other branch to main -- it also refers as a push -- and we merge the branch -- only after testing everything
     branches:
       - main
     paths:
-      - 'auth/**' #! any change  in this folder will cause  this to update -- CHANGE THIS
+      - 'accounts/**' #! any change  in this folder will cause  this to update // CHANGE THIS 
 
 env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
@@ -46,19 +46,19 @@ jobs:
 
       # Build the Docker image
       - name: Build
-        run: cd auth && docker build -t 03004968719/portal-auth:${{ github.sha }} . && docker build -t 03004968719/portal-auth:latest .
+        run: cd accounts && docker build -t 03004968719/portal-accounts:${{ github.sha }} . && docker build -t 03004968719/portal-accounts:latest .
       #! Change This
 
       # Push the Docker image to Google Container Registry
       - name: Publish
-        run: docker push 03004968719/portal-auth:${{ github.sha }} && docker push 03004968719/portal-auth:latest
+        run: docker push 03004968719/portal-accounts:${{ github.sha }} && docker push 03004968719/portal-accounts:latest
       #! Change This
 
       # Deploy the Docker image to the GKE cluster
       - name: Deploy
         run: |-
-          kubectl set image deployments/auth-depl auth=03004968719/portal-auth:${{ github.sha }}
-          kubectl apply -f infrastructure/k8s/auth/auth-depl.yaml
-          kubectl rollout restart deployment auth-depl # restart, so it can use newest image
+          kubectl set image deployments/accounts-depl accounts=03004968719/portal-accounts:${{ github.sha }}
+          kubectl apply -f infrastructure/k8s/accounts/accounts-depl.yaml
+          kubectl rollout restart deployment accounts-depl # restart, so it can use newest image
           kubectl get services -o wide
       #! Change This
