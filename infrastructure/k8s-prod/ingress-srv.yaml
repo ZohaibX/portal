@@ -8,7 +8,7 @@ metadata:
     nginx.ingress.kubernetes.io/use-regex: 'true'
 spec:
   rules:
-    - host: goldlacpaints.online
+    - host: zohaib-x.com # my domain 
       http:
         paths:
           - path: /api/users/?(.*)
