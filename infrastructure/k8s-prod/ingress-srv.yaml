@@ -8,8 +8,7 @@ metadata: #meta
     nginx.ingress.kubernetes.io/rewrite-target: /$1 # rewriting target
 spec:
   rules:
-    - host: www.goldlacpaints.online # new line - add this line after cert install and its file push
-      http:
+    - http:
         paths:
           - path: /?(.*) # idk but ssr is not leaving this exact route
             backend:
