@@ -1,0 +1,64 @@
+name: deploy-courses #! Change This
+
+on:
+  push: # when we pull and merge the code from some other branch to main -- it also refers as a push -- and we merge the branch -- only after testing everything
+    branches:
+      - main
+    paths:
+      - 'courses/**' #! any change  in this folder will cause  this to update // CHANGE THIS 
+
+env:
+  PROJECT_ID: ${{ secrets.GKE_PROJECT }}
+  GKE_CLUSTER: portal-portfolio-cluster
+  GKE_ZONE: us-central1-c
+  DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }} # double check the spellings
+  DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+
+jobs:
+  setup-build-publish-deploy:
+    name: Setup, Build, Publish, and Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      #? Setup gcloud CLI -- By GitHub
+      - uses: google-github-actions/setup-gcloud@v0.2.0
+        with:
+          service_account_key: ${{ secrets.GKE_SA_KEY }}
+          project_id: ${{ secrets.GKE_PROJECT }}
+
+      #? Configure Docker to use the gcloud command-line tool as a credential
+      # helper for authentication -- By GitHub
+      - run: |-
+          gcloud --quiet auth configure-docker
+      #? Get the GKE credentials so we can deploy to the cluster  -- By GitHub
+      - uses: google-github-actions/get-gke-credentials@v0.2.1
+        with:
+          cluster_name: ${{ env.GKE_CLUSTER }}
+          location: ${{ env.GKE_ZONE }}
+          credentials: ${{ secrets.GKE_SA_KEY }}
+
+      # Docker Login
+      - name: Docker Login
+        run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+
+      # Build the Docker image
+      - name: Build
+        run: cd courses && docker build -t 03004968719/portal-courses:${{ github.sha }} . && docker build -t 03004968719/portal-courses:latest .
+      #! Change This
+
+      # Push the Docker image to Google Container Registry
+      - name: Publish
+        run: docker push 03004968719/portal-courses:${{ github.sha }} && docker push 03004968719/portal-courses:latest
+      #! Change This
+
+      # Deploy the Docker image to the GKE cluster
+      - name: Deploy
+        run: |-
+          kubectl set image deployments/courses-depl courses=03004968719/portal-courses:${{ github.sha }}
+          kubectl apply -f infrastructure/k8s/courses/courses-depl.yaml
+          kubectl rollout restart deployment courses-depl # restart, so it can use newest image
+          kubectl get services -o wide
+      #! Change This
