@@ -5,3 +5,6 @@ typescript ts-node-dev express @types/express cors body-parser
 TS
 tsc --init -> to generate tsconfig.json
 change in start script
+
+
+----------
