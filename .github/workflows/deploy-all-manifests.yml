@@ -10,7 +10,7 @@ on:
 
 env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
-  GKE_CLUSTER: portal-portfolio-cluster
+  GKE_CLUSTER: portal-portfolio-cluster-1
   GKE_ZONE: us-central1-c
 
 jobs:

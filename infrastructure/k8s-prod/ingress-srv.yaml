@@ -1,4 +1,4 @@
-#? Basic commands must be executed from the website
+#? Basic commands must be executed from the website......
 apiVersion: extensions/v1beta1 # this apiVersion is expired but this is the only one working
 kind: Ingress
 metadata: #meta

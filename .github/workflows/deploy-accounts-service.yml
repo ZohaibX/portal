@@ -9,7 +9,7 @@ on:
 
 env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
-  GKE_CLUSTER: portal-portfolio-cluster
+  GKE_CLUSTER: portal-portfolio-cluster-1
   GKE_ZONE: us-central1-c
   DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }} # double check the spellings
   DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
