@@ -7,4 +7,4 @@ tsc --init -> to generate tsconfig.json
 change in start script
 
 
----------------------
+-------------------------
