@@ -40,7 +40,7 @@ spec:
             - name: S3_SECRET_KEY
               valueFrom: 
                 secretKeyRef: 
-                  name: se-secret-key
+                  name: s3-secret-key
                   key: S3_SECRET_KEY
             - name: NATS_CLIENT_ID
               valueFrom:
