@@ -40,6 +40,7 @@ jobs:
           cluster_name: ${{ env.GKE_CLUSTER }}
           location: ${{ env.GKE_ZONE }}
           credentials: ${{ secrets.GKE_SA_KEY }}
+          # for gke_sa_key -- go to gke -> iam -> service-account and create account and key json key
 
       # Docker Login
       - name: Docker Login
@@ -60,6 +61,7 @@ jobs:
         run: |-
           kubectl set image deployments/auth-depl auth=03004968719/portal-auth:${{ github.sha }}
           kubectl apply -f infrastructure/k8s/auth/auth-depl.yaml
-          kubectl rollout restart deployment auth-depl # restart, so it can use newest image
+          kubectl rollout restart deployment auth-depl 
+      # restart, so it can use newest image
           kubectl get services -o wide
       #! Change This
