@@ -2,6 +2,7 @@ Don't send section and roll no if sign up as teacher
 about page -- explaining what portal does 
 try catch block on email sending 
 do jwt expiry check
+learn redirection to a route we were redirected from
 
 REDIS IS USED IN AUTH SRV - get-courses route and course-created listener 
 
