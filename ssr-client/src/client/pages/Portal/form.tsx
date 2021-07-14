@@ -1,15 +1,32 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import "../../css/main.css"
+import useRequest from '../../hooks/use-request';
 
 const Form = () => {
+
+  const [email , setEmail]  = React.useState("");
+  const [password , setPassword]  = React.useState("");
+
+  const { doRequest, error } = useRequest(
+    '/api/users/sign-in',
+    {email , password},
+    'post')
+
+  const submit = (e: any) => {
+    e.preventDefault();
+
+    doRequest({redirectPath:"" })
+
+  }
+
   return (
     <section className="booking">
       <div className="row">
         {/* row -- to have a container only */}
         <div className="book">
           <div className="book__form">
-            <form action="" className="form">
+            <form action="" className="form" onSubmit={submit}>
               <h2 className="heading-secondary form__heading">
                 Login to your account 
               </h2>
@@ -20,6 +37,8 @@ const Form = () => {
                   className="form__input"
                   placeholder="Your Email"
                   required
+                  value = {email} 
+                  onChange = {(e: any) => setEmail(e.currentTarget.value)}
                   id="name"
                 />
                 <label htmlFor="name" className="form__label">
@@ -33,6 +52,8 @@ const Form = () => {
                   className="form__input"
                   placeholder="Your Password"
                   required
+                  value = {password} 
+                  onChange = {(e: any) => setPassword(e.currentTarget.value)}
                   id="email"
                 />
                 <label htmlFor="email" className="form__label">
