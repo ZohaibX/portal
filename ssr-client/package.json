@@ -6,7 +6,7 @@
     "scripts": {
         "dev": "concurrently \"yarn prod:server\" \"yarn dev:build:server\" \"yarn dev:build:client\"", 
         "dev:server": "nodemon --watch build --exec node build/bundle.js",
-        "prod:server": "node /app/build/bundle.js --exec" ,
+        "prod:server": "node build/bundle.js --exec" ,
         "dev:build:server": "webpack --config webpack.server.js --watch",
         "dev:build:client": "webpack --config webpack.client.js --watch",
         "compile:sass": "node-sass src/client/sass/main.scss src/client/css/main.css --watch"
