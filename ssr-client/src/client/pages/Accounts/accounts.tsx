@@ -87,7 +87,13 @@ const Profile = (props: any) => {
   // searching 
   const [searchField , changeSearchField] = React.useState("")
 
-  const rows = props.fetchAllAccounts.fetchAllAccounts.map((item: any) => item.email);
+  let rows 
+  try{
+    rows = props.fetchAllAccounts.fetchAllAccounts.map((item: any) => item.email);
+  }catch{
+    // make this request on page reload -- not on server side and cover it with HOC - if necessary
+    console.log("error coming from accounts.tsx - line around 95")
+  }
   
 
   // filtering starts
