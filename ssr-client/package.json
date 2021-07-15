@@ -4,11 +4,11 @@
     "description": "Server side rendering project",
     "main": "index.js",
     "scripts": {
-        "dev": "concurrently \"yarn dev:server\" \"yarn dev:build:server\" \"yarn dev:build:client\"", 
+        "dev": "concurrently \"yarn prod:server\" \"yarn dev:build:server\" \"yarn dev:build:client\"", 
         "dev:server": "nodemon --watch build --exec node build/bundle.js",
-        "prod:server": "node build/bundle.js --exec" ,
         "dev:build:server": "webpack --config webpack.server.js --watch",
         "dev:build:client": "webpack --config webpack.client.js --watch",
+        "prod:server": "node build/bundle.js --exec" ,
         "compile:sass": "node-sass src/client/sass/main.scss src/client/css/main.css --watch"
     },
     "author": "",
