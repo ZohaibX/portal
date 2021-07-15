@@ -10,7 +10,7 @@ spec:
   rules:
     - http:
         paths:
-          - path: /?(.*) # idk but ssr is not leaving this exact route
+          - path: /.* # idk but ssr is not leaving this exact route
             backend:
               serviceName: ssr-service # actual service file name
               servicePort: 3000 # actual service file port
