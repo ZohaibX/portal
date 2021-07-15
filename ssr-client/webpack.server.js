@@ -27,7 +27,7 @@ module.exports = {
   },
 
 
-  mode: "production", //   MUST CHANGE THIS IN DEV OR PROD ENV
+  mode: dev ? "development" : "production",
 
   // tell webpack, to apply babel on every file, it runs through
   module: {
