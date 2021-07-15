@@ -27,7 +27,7 @@ const PortalHome = () => {
       {head()}
 
       <div className="info">
-        <p>This is just a showcase portal. Only main components work</p>
+        <p>Website is under constructions -- we are working on mobile view -- some components may not work-- please bear with us</p>
       </div>
       <Navbar />
       

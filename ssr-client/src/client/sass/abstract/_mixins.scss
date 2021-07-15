@@ -44,6 +44,13 @@ big-desktop -- 1800px +
         }
     }
 
+    @if $breakpoint==400 {
+        @media only screen and (max-width: 25em) {
+            // 400px
+            @content;
+        }
+    }
+
     @if $breakpoint==450 {
         @media only screen and (max-width: 28.125em) {
             // 450px
@@ -75,13 +82,6 @@ big-desktop -- 1800px +
     @if $breakpoint==660 {
         @media (max-width: 41.25em) {
             // 660px
-            @content;
-        }
-    }
-
-    @if $breakpoint==670 {
-        @media only screen and (max-width: 41.875em) {
-            // 750px
             @content;
         }
     }
