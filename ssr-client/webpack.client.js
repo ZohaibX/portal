@@ -22,6 +22,8 @@ module.exports = {
   
   plugins: [new MiniCssExtractPlugin()],
 
+  mode: dev ? "development" : "production",
+
   // tell webpack, to apply babel on every file, it runs through
   module: {
     rules: [
