@@ -1,0 +1,37 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-prod
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: 'zohaibbutt045@gmail.com'
+    privateKeySecretRef:
+      name: letsencrypt-prod
+    solvers:
+      - http01:
+          ingress:
+            class: nginx
+#! Issuer File For Cert Manager
+--- 
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: zohaib-x-com-tls # acc to my domain name .. (online) could be org , com , io
+spec:
+  secretName: zohaib-x-com
+  issuerRef: # reference to the issuer file
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: zohaib-x.com
+  dnsNames:
+    - zohaib-x.com
+    - www.zohaib-x.com
+  acme:
+    config:
+      - http01:
+          ingressClass: nginx
+        domains:
+          - zohaib-x.com
+          - www.zohaib-x.com
+#! This is the certificate file for cert manager
