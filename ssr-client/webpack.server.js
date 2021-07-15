@@ -26,9 +26,6 @@ module.exports = {
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.json', '.css' , '.scss']
   },
 
-
-  mode: dev ? "development" : "production",
-
   // tell webpack, to apply babel on every file, it runs through
   module: {
     rules: [
