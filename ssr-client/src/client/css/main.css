@@ -134,6 +134,10 @@ big-desktop -- 1800px +
   position: relative;
   overflow: hidden;
   border-radius: 50%; }
+  @media only screen and (max-width: 25em) {
+    .image-box {
+      height: 16rem;
+      width: 16rem; } }
   @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
     .image-box {
       -webkit-clip-path: circle(50% at 50% 50%);
@@ -294,9 +298,6 @@ big-desktop -- 1800px +
     font-weight: bolder; }
   .logo-text__p {
     font-weight: bold; }
-  @media only screen and (max-width: 41.875em) {
-    .logo-text {
-      transform: translate(1rem, 1rem) skew(-12deg); } }
   @media only screen and (max-width: 41.875em) {
     .logo-text {
       transform: translate(1rem, 1rem) skew(-12deg); } }

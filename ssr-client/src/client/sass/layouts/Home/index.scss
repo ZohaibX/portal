@@ -17,6 +17,11 @@
   height: 12rem;
   width: 12rem;
 
+  @include respond(400) {
+    height: 16rem;
+    width: 16rem;
+  }
+
   // transform: translateX(-3rem) skew(12deg);
   // as if we have floated something .. so we cannot do something with margins ..
   // so to take picture -3rem of x axis -- we use translate ..
