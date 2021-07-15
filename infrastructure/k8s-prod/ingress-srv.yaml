@@ -5,26 +5,27 @@ metadata: #meta
   name: ingress-service
   annotations:
     kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/use-regex: 'true' # must write this line 
+    # nginx.ingress.kubernetes.io/use-regex: 'true' # must write this line 
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
     - http:
         paths:
-          - path: /?(.*) 
-            backend:
-              serviceName: ssr-service # actual service file name
-              servicePort: 3000 # actual service file port
-          - path: /api/users/?(.*)
+          - path: /api/users/
             backend:
               serviceName: auth-service # actual service file name
               servicePort: 3000 # actual service file port
-          - path: /api/accounts/?(.*)
+          - path: /api/accounts/
             backend:
               serviceName: accounts-service # actual service file name
               servicePort: 3000 # actual service file port
-          - path: /api/courses/?(.*)
+          - path: /api/courses/
             backend:
               serviceName: courses-service # actual service file name
+              servicePort: 3000 # actual service file port
+          - path: /
+            backend:
+              serviceName: ssr-service # actual service file name
               servicePort: 3000 # actual service file port
           # just do it on last 
 # ---
