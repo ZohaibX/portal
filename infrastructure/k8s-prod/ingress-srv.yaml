@@ -10,6 +10,10 @@ spec:
   rules:
     - http:
         paths:
+          - path: /?(.*) # idk but ssr is not leaving this exact route
+            backend:
+              serviceName: ssr-service # actual service file name
+              servicePort: 3000 # actual service file port
           - path: /api/users/?(.*)
             backend:
               serviceName: auth-service # actual service file name
@@ -21,10 +25,6 @@ spec:
           - path: /api/courses/?(.*)
             backend:
               serviceName: courses-service # actual service file name
-              servicePort: 3000 # actual service file port
-          - path: /?(.*) # idk but ssr is not leaving this exact route
-            backend:
-              serviceName: ssr-service # actual service file name
               servicePort: 3000 # actual service file port
           # just do it on last 
 ---
