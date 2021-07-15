@@ -12,7 +12,7 @@ spec:
       - http01:
           ingress:
             class: nginx
-#! Issuer File For Cert Manager
+#! Issuer File For Cert Manager-- 
 --- 
 apiVersion: cert-manager.io/v1alpha2
 kind: Certificate
