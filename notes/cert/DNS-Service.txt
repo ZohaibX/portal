@@ -7,6 +7,6 @@ NAME    TYPE    TTL   DATA/VALUE
  @        A     1H     IP Address   (IP Address like 123.121.31.21)
  www     CNAME  1H     goldlacpaints.online (domain name )
 
-IP Address will be from gcloud/services and ingresses/ingress-service 
+IP Address will be from gcloud/services and my-nginx-nginx-ingress-controller
 
 ingress-service will be configured by added ingress-service special commands 
