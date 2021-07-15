@@ -9,4 +9,4 @@ RUN yarn install --only=prod
 
 COPY . .
 
-CMD ["yarn" , "dev"]
+RUN ["yarn" , "dev"]
